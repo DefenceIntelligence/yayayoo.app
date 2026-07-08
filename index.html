@@ -258,6 +258,50 @@
       .app-card { padding: 28px; }
       .footer-inner { flex-direction: column; align-items: flex-start; }
     }
+
+    /* ── EASTER EGG B — mascotte cliquable ── */
+    #mascot {
+      cursor: pointer; user-select: none;
+      filter: drop-shadow(0 0 0px #FFD93D);
+      transition: filter .3s;
+    }
+    #mascot:active { transform: scale(.88); }
+    #mascot.wiggle { animation: wiggle .35s ease; }
+    #mascot.glowing { filter: drop-shadow(0 0 14px rgba(255,217,61,.65)); }
+    @keyframes wiggle {
+      0%   { transform: rotate(0deg) scale(1); }
+      25%  { transform: rotate(-13deg) scale(1.2); }
+      50%  { transform: rotate(13deg) scale(1.2); }
+      75%  { transform: rotate(-6deg) scale(1.1); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+    #egg-dots { display: flex; gap: 6px; margin-bottom: 48px; height: 8px; }
+    .egg-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      transition: background .2s, transform .2s;
+    }
+    .egg-dot.active { background: #FFD93D; transform: scale(1.35); }
+    #egg-toast {
+      position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%) translateY(110px);
+      background: #1C1C1E; border: 1px solid rgba(255,255,255,.12); border-radius: 20px;
+      padding: 16px 24px; display: flex; align-items: center; gap: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.75), 0 0 0 1px rgba(255,217,61,.15);
+      opacity: 0; transition: transform .45s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
+      pointer-events: none; z-index: 999; white-space: nowrap;
+    }
+    #egg-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .toast-emoji { font-size: 2rem; }
+    .toast-text { display: flex; flex-direction: column; gap: 3px; }
+    .toast-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .toast-sub { font-size: .8rem; color: var(--muted); }
+
+    /* ── EASTER EGG A — texte quasi invisible ── */
+    .footer-love {
+      width: 100%; text-align: center;
+      font-size: .78rem; color: rgba(255,255,255,.04);
+      margin-top: 4px; letter-spacing: .5px;
+    }
   </style>
 </head>
 <body>
@@ -284,7 +328,7 @@
   <!-- HERO -->
   <section class="hero">
     <p class="hero-eyebrow" data-i18n="eyebrow">Studio indépendant · Apps iPhone</p>
-    <svg width="72" height="72" viewBox="0 0 48 48" fill="none" style="margin-bottom:16px;">
+    <svg id="mascot" width="72" height="72" viewBox="0 0 48 48" fill="none" style="margin-bottom:12px;">
       <rect width="48" height="48" rx="14" fill="#1C1C1E"/>
       <rect width="48" height="48" rx="14" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
       <circle cx="17" cy="20" r="4" fill="#FF6B6B"/>
@@ -293,6 +337,11 @@
       <circle cx="32.2" cy="21.2" r="1.8" fill="white"/>
       <path d="M15 29 Q24 37 33 29" stroke="#FFD93D" stroke-width="2.5" stroke-linecap="round" fill="none"/>
     </svg>
+    <div id="egg-dots">
+      <div class="egg-dot"></div>
+      <div class="egg-dot"></div>
+      <div class="egg-dot"></div>
+    </div>
     <div class="hero-logo">yayayoo</div>
     <p class="hero-tagline" data-i18n="tagline">Des apps qui font sourire.</p>
     <p class="hero-sub" data-i18n="sub">Simple. Soigné. Amusant.</p>
@@ -402,8 +451,18 @@
       </div>
 
       <p class="footer-copy">© 2026 Stéphane Desmets. <span data-i18n="f_rights">Tous droits réservés.</span></p>
+      <p class="footer-love">💛 Pour Arwen &amp; Noah — vous êtes la raison de tout ça.</p>
     </div>
   </footer>
+
+  <!-- Easter egg B toast -->
+  <div id="egg-toast">
+    <span class="toast-emoji">💛</span>
+    <div class="toast-text">
+      <span class="toast-title">Pour Arwen &amp; Noah</span>
+      <span class="toast-sub">Ce site est fait avec amour, pour vous.</span>
+    </div>
+  </div>
 
   <script>
     const T = {
@@ -489,6 +548,37 @@
     }
 
     setLang(lang);
+
+    // Easter egg B — triple click on mascot
+    (function() {
+      const mascot = document.getElementById('mascot');
+      const toast  = document.getElementById('egg-toast');
+      const dots   = Array.from(document.querySelectorAll('.egg-dot'));
+      let clicks = 0, timer = null;
+
+      mascot.addEventListener('click', () => {
+        clicks++;
+        clearTimeout(timer);
+        mascot.classList.remove('wiggle');
+        void mascot.offsetWidth;
+        mascot.classList.add('wiggle');
+        dots.forEach((d, i) => d.classList.toggle('active', i < clicks));
+
+        if (clicks >= 3) {
+          mascot.classList.add('glowing');
+          setTimeout(() => mascot.classList.remove('glowing'), 1400);
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+          clicks = 0;
+          setTimeout(() => dots.forEach(d => d.classList.remove('active')), 450);
+        } else {
+          timer = setTimeout(() => {
+            clicks = 0;
+            dots.forEach(d => d.classList.remove('active'));
+          }, 2000);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
