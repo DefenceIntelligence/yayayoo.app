@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almostly — Tes dates, avec personnalité</title>
+  <meta name="description" content="Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #FF6B35;
+      --coral:  #FF4F7B;
+      --blue:   #3D87F5;
+      --green:  #34C977;
+      --dark:   #111318;
+      --text:   #1C1C1E;
+      --muted:  #6E6E73;
+      --bg:     #F5F5F7;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background: #fff; color: var(--text); overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255,255,255,.82);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 56px;
+    }
+    .nav-back {
+      font-size: .85rem; color: rgba(0,0,0,.4); text-decoration: none;
+      display: flex; align-items: center; gap: 4px; transition: color .2s;
+    }
+    .nav-back:hover { color: rgba(0,0,0,.75); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -.5px; }
+    .nav-logo span { color: var(--orange); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-switcher { display: flex; gap: 4px; }
+    .lang-switcher button {
+      background: none; border: none; cursor: pointer;
+      font-size: 1.2rem; padding: 4px 6px; border-radius: 8px;
+      opacity: .45; transition: opacity .2s, background .2s; line-height: 1;
+    }
+    .lang-switcher button:hover { opacity: .8; background: rgba(0,0,0,.06); }
+    .lang-switcher button.active { opacity: 1; background: rgba(0,0,0,.06); }
+    .nav-cta {
+      background: var(--dark); color: #fff;
+      padding: 8px 18px; border-radius: 20px;
+      font-size: .85rem; font-weight: 600; text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .8; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 100px 24px 60px;
+      background: linear-gradient(160deg, #fff 0%, #FFF4EF 40%, #EFF4FF 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(255,107,53,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 70%, rgba(61,135,245,.10) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,107,53,.1); color: var(--orange);
+      border: 1px solid rgba(255,107,53,.25);
+      padding: 5px 14px; border-radius: 20px;
+      font-size: .8rem; font-weight: 600; margin-bottom: 24px; position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800; letter-spacing: -2px; line-height: 1.05; position: relative;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, var(--orange) 0%, var(--coral) 50%, var(--blue) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub { margin-top: 20px; max-width: 560px; font-size: 1.2rem; color: var(--muted); line-height: 1.6; position: relative; }
+    .hero-actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--dark); color: #fff;
+      padding: 14px 28px; border-radius: 14px;
+      font-size: 1rem; font-weight: 600; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,.18);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,.22); }
+    .btn-primary svg { width: 22px; height: 22px; fill: #fff; }
+    .btn-secondary {
+      display: inline-flex; align-items: center;
+      background: rgba(0,0,0,.06); color: var(--text);
+      padding: 14px 28px; border-radius: 14px;
+      font-size: 1rem; font-weight: 600; text-decoration: none; transition: background .2s;
+    }
+    .btn-secondary:hover { background: rgba(0,0,0,.1); }
+
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag {
+      display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+    }
+    .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -.5px; line-height: 1.1; }
+    .section-header p { margin-top: 12px; color: var(--muted); font-size: 1.05rem; max-width: 480px; margin-inline: auto; line-height: 1.6; }
+
+    .features { padding: 100px 24px; background: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .feature-card { background: var(--bg); border-radius: 20px; padding: 32px 28px; transition: transform .2s; }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+    .pip-section { padding: 100px 24px; background: linear-gradient(135deg, #FF6B35 0%, #FF4F7B 50%, #9B59FF 100%); color: #fff; text-align: center; }
+    .pip-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 16px; }
+    .pip-section p { font-size: 1.1rem; opacity: .88; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
+    .pip-quotes { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; max-width: 820px; margin: 0 auto; }
+    .pip-quote { background: rgba(255,255,255,.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.25); border-radius: 16px; padding: 16px 20px; font-size: .9rem; font-style: italic; max-width: 240px; text-align: left; line-height: 1.5; }
+    .pip-quote .tone { display: block; font-style: normal; font-weight: 700; font-size: .72rem; letter-spacing: .8px; text-transform: uppercase; opacity: .7; margin-bottom: 6px; }
+
+    .pricing { padding: 100px 24px; background: var(--bg); }
+    .pricing-cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; max-width: 800px; margin: 0 auto; }
+    .pricing-card { flex: 1; min-width: 280px; max-width: 340px; background: #fff; border-radius: 24px; padding: 36px 32px; box-shadow: 0 2px 20px rgba(0,0,0,.07); }
+    .pricing-card.plus { background: var(--dark); color: #fff; box-shadow: 0 8px 40px rgba(0,0,0,.2); }
+    .pricing-card .plan { font-size: .8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; opacity: .6; margin-bottom: 8px; }
+    .pricing-card .price { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
+    .pricing-card .price-note { font-size: .85rem; opacity: .55; margin-bottom: 28px; }
+    .pricing-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .pricing-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .9rem; line-height: 1.4; }
+    .pricing-list li .check { font-size: 1rem; flex-shrink: 0; margin-top: 1px; color: var(--green); }
+    .pricing-card.plus .plan { color: rgba(255,255,255,.6); }
+    .pricing-card.plus .price-note { color: rgba(255,255,255,.55); }
+
+    footer { background: var(--dark); color: rgba(255,255,255,.5); padding: 48px 32px 32px; text-align: center; }
+    .footer-logo { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .footer-links a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: .78rem; }
+
+    @media (max-width: 600px) { nav { padding: 0 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-back">← yayayoo</a>
+    <div class="nav-logo">Almost<span>ly</span></div>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button id="btn-fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button id="btn-en" onclick="setLang('en')" title="English">🇬🇧</button>
+      </div>
+      <a class="nav-cta" href="https://apps.apple.com/app/almostly/id6779545689" data-i18n="nav.download">Télécharger</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge" data-i18n="hero.badge">✦ Disponible sur l'App Store</div>
+    <h1 data-i18n="hero.title">Tes dates,<br><span class="gradient">avec personnalité.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://apps.apple.com/app/almostly/id6779545689">
+        <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span data-i18n="hero.cta">App Store</span>
+      </a>
+      <a class="btn-secondary" href="#features" data-i18n="hero.more">En savoir plus</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="features.tag">Fonctionnalités</span>
+      <h2 data-i18n="features.title">Tout ce qu'il faut pour<br>ne jamais oublier.</h2>
+      <p data-i18n="features.sub">Des événements qui comptent — dans tous les sens du terme.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#FFF0E8;">⏳</div>
+        <h3 data-i18n="f1.title">Compte à rebours & écoulé</h3>
+        <p data-i18n="f1.body">Compte les jours qui restent avant un événement, ou ceux qui se sont écoulés depuis. Anniversaire, projet, défi — tout y passe.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#EAF4FF;">🎨</div>
+        <h3 data-i18n="f2.title">12 thèmes de couleur</h3>
+        <p data-i18n="f2.body">Océan, Coucher de soleil, Forêt, Flamme, Aurore, Or… chaque événement a sa propre ambiance visuelle.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#F0FFF5;">🔔</div>
+        <h3 data-i18n="f3.title">Rappels configurables</h3>
+        <p data-i18n="f3.body">Reçois une notification le jour J, la veille, une semaine avant — ou quand tu veux. Almostly s'adapte à ton rythme.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#F5F0FF;">⌚</div>
+        <h3 data-i18n="f4.title">Apple Watch</h3>
+        <p data-i18n="f4.body">Tes événements synchronisés sur ta montre, consultables d'un coup d'œil depuis ton poignet.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#FFF0F4;">📲</div>
+        <h3 data-i18n="f5.title">Widgets & Dynamic Island</h3>
+        <p data-i18n="f5.body">Affiche ton prochain événement sur l'écran d'accueil. Le jour J, le Dynamic Island prend le relais avec un compte à rebours en temps réel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#FFFBE8;">🖼️</div>
+        <h3 data-i18n="f6.title">Cartes à partager</h3>
+        <p data-i18n="f6.body">Génère une belle carte illustrée pour partager ton compte à rebours sur Instagram, iMessage ou ailleurs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pip-section">
+    <h2 data-i18n="pip.title">Rencontre Pip 🐾</h2>
+    <p data-i18n="pip.sub">Ta mascotte préférée commente tes événements avec une personnalité bien à elle. Choisis son humeur parmi quatre tons différents.</p>
+    <div class="pip-quotes">
+      <div class="pip-quote"><span class="tone" data-i18n="pip.t1">✨ Bienveillant</span><span data-i18n="pip.q1">"J-3 avant Tokyo. Le voyage commence dans ta tête, bien avant l'aéroport."</span></div>
+      <div class="pip-quote"><span class="tone" data-i18n="pip.t2">😏 Sarcastique</span><span data-i18n="pip.q2">"J-12 avant l'examen. 12 jours pour faire ce que tu aurais dû faire en 3 mois."</span></div>
+      <div class="pip-quote"><span class="tone" data-i18n="pip.t3">💪 Coach</span><span data-i18n="pip.q3">"J-45 avant le marathon. Chaque entraînement compte. Tu es plus prêt que tu ne le crois."</span></div>
+      <div class="pip-quote"><span class="tone" data-i18n="pip.t4">🍃 Zen</span><span data-i18n="pip.q4">"J-1 avant l'anniv de Léa. Demain arrive comme il doit arriver. Respire."</span></div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="pricing.tag">Tarifs</span>
+      <h2 data-i18n="pricing.title">Gratuit pour commencer,<br>Plus pour aller plus loin.</h2>
+      <p data-i18n="pricing.sub">Almostly est gratuit. Almostly Plus débloque tout, une seule fois, sans abonnement.</p>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <p class="plan" data-i18n="free.plan">Gratuit</p>
+        <p class="price">0 €</p>
+        <p class="price-note" data-i18n="free.note">Pour toujours</p>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span><span data-i18n="free.f1">2 événements</span></li>
+          <li><span class="check">✓</span><span data-i18n="free.f2">3 thèmes (Océan, Coucher de soleil, Forêt)</span></li>
+          <li><span class="check">✓</span><span data-i18n="free.f3">Ton bienveillant de Pip</span></li>
+          <li><span class="check">✓</span><span data-i18n="free.f4">Widgets</span></li>
+          <li><span class="check">✓</span><span data-i18n="free.f5">Rappels</span></li>
+        </ul>
+      </div>
+      <div class="pricing-card plus">
+        <p class="plan">✦ Almostly Plus</p>
+        <p class="price">2,99 €</p>
+        <p class="price-note" data-i18n="plus.note">Achat unique — à vie</p>
+        <ul class="pricing-list">
+          <li><span class="check">✓</span><span data-i18n="plus.f1">Événements illimités</span></li>
+          <li><span class="check">✓</span><span data-i18n="plus.f2">12 thèmes de couleur</span></li>
+          <li><span class="check">✓</span><span data-i18n="plus.f3">4 tons de Pip</span></li>
+          <li><span class="check">✓</span><span data-i18n="plus.f4">Icônes d'app personnalisées</span></li>
+          <li><span class="check">✓</span><span data-i18n="plus.f5">Archivage automatique</span></li>
+          <li><span class="check">✓</span><span data-i18n="plus.f6">Sync Apple Watch</span></li>
+          <li><span class="check">✓</span><span data-i18n="plus.f7">Cartes à partager</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Almostly</div>
+    <div class="footer-links">
+      <a href="/almostly/privacy" data-i18n="footer.privacy">Politique de confidentialité</a>
+      <a href="/almostly/terms" data-i18n="footer.terms">Conditions d'utilisation</a>
+      <a href="/">← yayayoo</a>
+      <a href="mailto:defintelligence@proton.me">Contact</a>
+    </div>
+    <p class="footer-copy" data-i18n="footer.copy">© 2026 Stéphane Desmets. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    const T = {
+      fr: {
+        'nav.download':'Télécharger','hero.badge':'✦ Disponible sur l\'App Store',
+        'hero.title':'Tes dates,<br><span class="gradient">avec personnalité.</span>',
+        'hero.sub':'Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.',
+        'hero.cta':'App Store','hero.more':'En savoir plus',
+        'features.tag':'Fonctionnalités','features.title':'Tout ce qu\'il faut pour<br>ne jamais oublier.','features.sub':'Des événements qui comptent — dans tous les sens du terme.',
+        'f1.title':'Compte à rebours & écoulé','f1.body':'Compte les jours qui restent avant un événement, ou ceux qui se sont écoulés depuis. Anniversaire, projet, défi — tout y passe.',
+        'f2.title':'12 thèmes de couleur','f2.body':'Océan, Coucher de soleil, Forêt, Flamme, Aurore, Or… chaque événement a sa propre ambiance visuelle.',
+        'f3.title':'Rappels configurables','f3.body':'Reçois une notification le jour J, la veille, une semaine avant — ou quand tu veux. Almostly s\'adapte à ton rythme.',
+        'f4.title':'Apple Watch','f4.body':'Tes événements synchronisés sur ta montre, consultables d\'un coup d\'œil depuis ton poignet.',
+        'f5.title':'Widgets & Dynamic Island','f5.body':'Affiche ton prochain événement sur l\'écran d\'accueil. Le jour J, le Dynamic Island prend le relais avec un compte à rebours en temps réel.',
+        'f6.title':'Cartes à partager','f6.body':'Génère une belle carte illustrée pour partager ton compte à rebours sur Instagram, iMessage ou ailleurs.',
+        'pip.title':'Rencontre Pip 🐾','pip.sub':'Ta mascotte préférée commente tes événements avec une personnalité bien à elle. Choisis son humeur parmi quatre tons différents.',
+        'pip.t1':'✨ Bienveillant','pip.q1':'"J-3 avant Tokyo. Le voyage commence dans ta tête, bien avant l\'aéroport."',
+        'pip.t2':'😏 Sarcastique','pip.q2':'"J-12 avant l\'examen. 12 jours pour faire ce que tu aurais dû faire en 3 mois."',
+        'pip.t3':'💪 Coach','pip.q3':'"J-45 avant le marathon. Chaque entraînement compte. Tu es plus prêt que tu ne le crois."',
+        'pip.t4':'🍃 Zen','pip.q4':'"J-1 avant l\'anniv de Léa. Demain arrive comme il doit arriver. Respire."',
+        'pricing.tag':'Tarifs','pricing.title':'Gratuit pour commencer,<br>Plus pour aller plus loin.','pricing.sub':'Almostly est gratuit. Almostly Plus débloque tout, une seule fois, sans abonnement.',
+        'free.plan':'Gratuit','free.note':'Pour toujours',
+        'free.f1':'2 événements','free.f2':'3 thèmes (Océan, Coucher de soleil, Forêt)','free.f3':'Ton bienveillant de Pip','free.f4':'Widgets','free.f5':'Rappels',
+        'plus.note':'Achat unique — à vie',
+        'plus.f1':'Événements illimités','plus.f2':'12 thèmes de couleur','plus.f3':'4 tons de Pip','plus.f4':'Icônes d\'app personnalisées','plus.f5':'Archivage automatique','plus.f6':'Sync Apple Watch','plus.f7':'Cartes à partager',
+        'footer.privacy':'Politique de confidentialité','footer.terms':'Conditions d\'utilisation','footer.copy':'© 2026 Stéphane Desmets. Tous droits réservés.'
+      },
+      en: {
+        'nav.download':'Download','hero.badge':'✦ Available on the App Store',
+        'hero.title':'Your dates,<br><span class="gradient">with personality.</span>',
+        'hero.sub':'Almostly counts your days in style — and Pip, your mascot, comments on every milestone with humor, warmth, or zen vibes.',
+        'hero.cta':'App Store','hero.more':'Learn more',
+        'features.tag':'Features','features.title':'Everything you need<br>to never forget.','features.sub':'Events that matter — in every sense of the word.',
+        'f1.title':'Countdown & elapsed','f1.body':'Count the days remaining before an event, or those that have passed since. Birthday, project, challenge — everything counts.',
+        'f2.title':'12 color themes','f2.body':'Ocean, Sunset, Forest, Flame, Aurora, Gold… each event has its own visual vibe.',
+        'f3.title':'Configurable reminders','f3.body':'Get notified on the day, the day before, a week before — or whenever you want. Almostly adapts to your rhythm.',
+        'f4.title':'Apple Watch','f4.body':'Your events synced to your watch, viewable at a glance from your wrist.',
+        'f5.title':'Widgets & Dynamic Island','f5.body':'Show your next event on your home screen. On the big day, Dynamic Island takes over with a real-time countdown.',
+        'f6.title':'Share cards','f6.body':'Generate a beautiful illustrated card to share your countdown on Instagram, iMessage, and more.',
+        'pip.title':'Meet Pip 🐾','pip.sub':'Your favorite mascot comments on your events with a personality all its own. Choose its mood from four different tones.',
+        'pip.t1':'✨ Wholesome','pip.q1':'"3 days to Tokyo. The journey starts in your head, long before the airport."',
+        'pip.t2':'😏 Sarcastic','pip.q2':'"12 days before the exam. 12 days to do what you should have done in 3 months."',
+        'pip.t3':'💪 Coach','pip.q3':'"45 days before the marathon. Every session counts. You\'re more ready than you think."',
+        'pip.t4':'🍃 Zen','pip.q4':'"1 day before Léa\'s birthday. Tomorrow comes as it should. Breathe."',
+        'pricing.tag':'Pricing','pricing.title':'Free to start,<br>Plus to go further.','pricing.sub':'Almostly is free. Almostly Plus unlocks everything, once, no subscription.',
+        'free.plan':'Free','free.note':'Forever free',
+        'free.f1':'2 events','free.f2':'3 themes (Ocean, Sunset, Forest)','free.f3':'Pip\'s wholesome tone','free.f4':'Widgets','free.f5':'Reminders',
+        'plus.note':'One-time purchase — for life',
+        'plus.f1':'Unlimited events','plus.f2':'12 color themes','plus.f3':'4 Pip tones','plus.f4':'Custom app icons','plus.f5':'Auto-archive','plus.f6':'Apple Watch sync','plus.f7':'Share cards',
+        'footer.privacy':'Privacy Policy','footer.terms':'Terms of Use','footer.copy':'© 2026 Stéphane Desmets. All rights reserved.'
+      }
+    };
+    function setLang(l) {
+      document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[l][el.dataset.i18n]; if (v !== undefined) el.innerHTML = v; });
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+      document.documentElement.lang = l;
+      document.title = l === 'fr' ? 'Almostly — Tes dates, avec personnalité' : 'Almostly — Your dates, with personality';
+      localStorage.setItem('lang', l);
+    }
+    setLang(localStorage.getItem('lang') || 'fr');
+  </script>
+</body>
+</html>
