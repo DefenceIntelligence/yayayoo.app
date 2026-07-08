@@ -98,12 +98,15 @@
       font-size: .88rem; color: var(--muted); opacity: .65; margin-bottom: 64px;
     }
     .hero-scroll {
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      color: var(--muted); font-size: .75rem; opacity: .5;
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--text); font-size: .85rem; font-weight: 600;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      padding: 10px 20px; border-radius: 50px;
       animation: float 2.5s ease-in-out infinite;
+      cursor: default;
     }
     .hero-scroll::after {
-      content: '↓'; font-size: 1.1rem;
+      content: '↓'; font-size: 1rem;
     }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
