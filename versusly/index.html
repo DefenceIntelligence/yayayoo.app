@@ -106,25 +106,24 @@
     }
     .btn-secondary:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.3); }
 
-    .mockup-section {
-      padding: 80px 24px;
-      display: flex; flex-direction: column; align-items: center; gap: 24px;
+    .screenshots-section {
+      padding: 40px 24px 80px;
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
     }
-    .phone-mockup {
-      width: 240px; height: 480px; background: #1C1C1E;
-      border-radius: 36px; border: 2px solid rgba(255,255,255,.1);
-      overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.6); position: relative;
+    .screenshots-scroll {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      max-width: 900px;
     }
-    .phone-top {
-      height: 50%; background: linear-gradient(135deg, rgba(255,59,48,.25), rgba(255,59,48,.05));
-      display: flex; align-items: center; justify-content: center;
-      transform: rotate(180deg); border-bottom: 2px solid rgba(255,255,255,.08);
+    .phone-frame {
+      width: 160px; border-radius: 28px;
+      border: 2px solid rgba(255,255,255,.12);
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.04);
+      flex-shrink: 0; transition: transform .25s, box-shadow .25s;
     }
-    .phone-bottom {
-      height: 50%; background: linear-gradient(135deg, rgba(0,122,255,.25), rgba(0,122,255,.05));
-      display: flex; align-items: center; justify-content: center;
-    }
-    .player-label { font-size: .7rem; font-weight: 900; letter-spacing: 2px; opacity: .6; }
+    .phone-frame:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 44px 80px rgba(0,0,0,.75); }
+    .phone-frame img { width: 100%; display: block; }
+    .screenshots-caption { font-size: .85rem; color: var(--muted); text-align: center; }
 
     .features { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
     .section-tag {
@@ -229,12 +228,14 @@
     </div>
   </section>
 
-  <section class="mockup-section">
-    <div class="phone-mockup">
-      <div class="phone-top"><span class="player-label" data-i18n="player1">JOUEUR 1</span></div>
-      <div class="phone-bottom"><span class="player-label" data-i18n="player2">JOUEUR 2</span></div>
+  <section class="screenshots-section">
+    <div class="screenshots-scroll">
+      <div class="phone-frame"><img src="/versusly/screenshots/home.png" alt="Accueil Versusly" loading="lazy"></div>
+      <div class="phone-frame"><img src="/versusly/screenshots/tugofwar.png" alt="Tir à la corde" loading="lazy"></div>
+      <div class="phone-frame"><img src="/versusly/screenshots/mathblitz.png" alt="Calcul éclair" loading="lazy"></div>
+      <div class="phone-frame"><img src="/versusly/screenshots/paywall.png" alt="Versusly Pro" loading="lazy"></div>
     </div>
-    <p style="color: var(--muted); font-size: .9rem;" data-i18n="mockup_desc">Chaque joueur tient un côté du téléphone. L'écran se divise en deux.</p>
+    <p class="screenshots-caption" data-i18n="mockup_desc">Chaque joueur tient un côté du téléphone. L'écran se divise en deux.</p>
   </section>
 
   <section class="features" id="games">
@@ -325,7 +326,7 @@
       </div>
       <div class="pricing-card featured">
         <p class="pricing-label" data-i18n="pro_label">VERSUSLY PRO</p>
-        <p class="pricing-price">2,99€ <small data-i18n="pro_period">achat unique</small></p>
+        <p class="pricing-price">0,99€ <small data-i18n="pro_period">achat unique</small></p>
         <p class="pricing-desc" data-i18n="pro_desc">Débloquez les 3 jeux Pro pour varier encore plus les plaisirs.</p>
         <ul class="pricing-features">
           <li data-i18n="pf1">Tout ce qui est gratuit</li>
