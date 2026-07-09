@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité — Givró</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; color: #1C1C1E; line-height: 1.7; }
+    a { color: #007AFF; text-decoration: none; }
+    nav { margin-bottom: 48px; display: flex; gap: 16px; } nav a { font-weight: 600; }
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -.5px; margin-bottom: 8px; }
+    .date { color: #6E6E73; font-size: .9rem; margin-bottom: 40px; }
+    h2 { font-size: 1.1rem; font-weight: 700; margin-top: 36px; margin-bottom: 8px; }
+    p, li { font-size: .95rem; color: #3A3A3C; }
+    ul { padding-left: 20px; }
+    footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid #E5E5EA; font-size: .8rem; color: #6E6E73; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/">← yayayoo</a>
+    <a href="/givro">← Givró</a>
+  </nav>
+
+  <h1>Politique de confidentialité</h1>
+  <p class="date">Dernière mise à jour : 9 juillet 2026</p>
+
+  <p>Givró est développée et maintenue par Stéphane Desmets (ci-après « nous » ou « l'application »). Cette politique explique quelles données sont utilisées, comment, et quels sont vos droits.</p>
+
+  <h2>1. Principe général</h2>
+  <p>Givró ne collecte, ne stocke et ne transmet <strong>aucune donnée personnelle</strong> vers des serveurs externes. L'intégralité des données reste sur votre appareil.</p>
+
+  <h2>2. Données météorologiques</h2>
+  <p>Givró récupère des prévisions météorologiques horaires via <strong>Open-Meteo</strong> (open-meteo.com), un service open-source gratuit. Les requêtes sont effectuées avec vos coordonnées géographiques uniquement, sans identifiant utilisateur ni compte. Open-Meteo est soumis à sa propre politique de confidentialité.</p>
+
+  <h2>3. Localisation</h2>
+  <p>Givró peut utiliser votre position GPS (via Apple CoreLocation) pour obtenir la météo locale. Cette position :</p>
+  <ul>
+    <li>N'est utilisée que pour interroger Open-Meteo</li>
+    <li>N'est pas stockée sur nos serveurs</li>
+    <li>N'est pas partagée avec des tiers (en dehors de la requête météo anonyme)</li>
+    <li>Peut être désactivée dans Réglages → Givró → Localisation</li>
+  </ul>
+
+  <h2>4. Température intérieure (HomeKit)</h2>
+  <p>Si vous activez l'intégration HomeKit, Givró accède en lecture aux données de votre capteur de température. Ces données :</p>
+  <ul>
+    <li>Sont lues directement depuis HomeKit, sur votre appareil</li>
+    <li>Ne sont pas transmises à nos serveurs</li>
+    <li>Sont utilisées uniquement pour affiner le calcul de ventilation</li>
+  </ul>
+
+  <h2>5. Données stockées localement</h2>
+  <ul>
+    <li>Vos préférences (seuil de confort, heure de ventilation, unité…) via UserDefaults</li>
+    <li>L'historique de vos nuits (heures d'ouverture/fermeture, températures) via SwiftData</li>
+  </ul>
+  <p>Ces données ne quittent jamais votre appareil et ne sont pas synchronisées sur iCloud.</p>
+
+  <h2>6. Notifications</h2>
+  <p>Givró envoie des notifications locales (alertes d'ouverture et de fermeture de fenêtres). Ces notifications sont générées sur votre appareil — aucune donnée n'est transmise à nos serveurs pour les déclencher.</p>
+
+  <h2>7. Publicités et tracking</h2>
+  <p>Givró ne contient aucune publicité et n'intègre aucun SDK de tracking, d'analyse ou de mesure d'audience tiers.</p>
+
+  <h2>8. Enfants</h2>
+  <p>Givró ne collecte aucune donnée et convient à tous les âges.</p>
+
+  <h2>9. Modifications</h2>
+  <p>Toute modification substantielle de cette politique sera notifiée via une mise à jour de l'application.</p>
+
+  <h2>10. Contact</h2>
+  <p>Pour toute question : <a href="mailto:defintelligence@proton.me">defintelligence@proton.me</a></p>
+
+  <footer>© 2026 Stéphane Desmets. Tous droits réservés.</footer>
+</body>
+</html>
