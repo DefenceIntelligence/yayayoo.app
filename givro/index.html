@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Givró — Rafraîchis ta nuit, naturellement.</title>
+  <meta name="description" content="Givró te dit quand ouvrir tes fenêtres la nuit pour rafraîchir ton logement naturellement pendant les canicules." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:  #007AFF;
+      --cyan:  #32ADE6;
+      --ice:   #5AC8FA;
+      --dark:  #111318;
+      --text:  #1C1C1E;
+      --muted: #6E6E73;
+      --bg:    #F5F5F7;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif; background: #fff; color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(255,255,255,.82); border-bottom: 1px solid rgba(0,0,0,.08);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 56px;
+    }
+    .nav-back { font-size: .85rem; color: rgba(0,0,0,.4); text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color .2s; }
+    .nav-back:hover { color: rgba(0,0,0,.75); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -.5px; }
+    .nav-logo span { color: var(--cyan); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-switcher { display: flex; gap: 4px; }
+    .lang-switcher button { background: none; border: none; cursor: pointer; font-size: 1.2rem; padding: 4px 6px; border-radius: 8px; opacity: .45; transition: opacity .2s, background .2s; line-height: 1; }
+    .lang-switcher button:hover { opacity: .8; background: rgba(0,0,0,.06); }
+    .lang-switcher button.active { opacity: 1; background: rgba(0,0,0,.06); }
+    .nav-cta { background: var(--dark); color: #fff; padding: 8px 18px; border-radius: 20px; font-size: .85rem; font-weight: 600; text-decoration: none; transition: opacity .2s; }
+    .nav-cta:hover { opacity: .8; }
+
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 100px 24px 60px;
+      background: linear-gradient(160deg, #fff 0%, #EFF8FF 40%, #E8F8F8 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 30%, rgba(0,122,255,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 70%, rgba(50,173,230,.10) 0%, transparent 70%);
+    }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,122,255,.1); color: var(--blue); border: 1px solid rgba(0,122,255,.25); padding: 5px 14px; border-radius: 20px; font-size: .8rem; font-weight: 600; margin-bottom: 24px; position: relative; }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.05; position: relative; }
+    .hero h1 .gradient { background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 50%, var(--ice) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { margin-top: 20px; max-width: 560px; font-size: 1.2rem; color: var(--muted); line-height: 1.6; position: relative; }
+    .hero-actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--dark); color: #fff; padding: 14px 28px; border-radius: 14px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(0,0,0,.18); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,.22); }
+    .btn-primary svg { width: 22px; height: 22px; fill: #fff; }
+    .btn-secondary { display: inline-flex; align-items: center; background: rgba(0,0,0,.06); color: var(--text); padding: 14px 28px; border-radius: 14px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: background .2s; }
+    .btn-secondary:hover { background: rgba(0,0,0,.1); }
+
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-tag { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -.5px; line-height: 1.1; }
+    .section-header p { margin-top: 12px; color: var(--muted); font-size: 1.05rem; max-width: 480px; margin-inline: auto; line-height: 1.6; }
+
+    .features { padding: 100px 24px; background: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .feature-card { background: var(--bg); border-radius: 20px; padding: 32px 28px; transition: transform .2s; }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+    .moods-section { padding: 100px 24px; background: linear-gradient(135deg, #007AFF 0%, #32ADE6 50%, #5AC8FA 100%); color: #fff; text-align: center; }
+    .moods-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 16px; }
+    .moods-section p { font-size: 1.1rem; opacity: .88; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
+    .moods-grid { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; max-width: 860px; margin: 0 auto; }
+    .mood-card { background: rgba(255,255,255,.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.25); border-radius: 16px; padding: 16px 20px; font-size: .9rem; max-width: 200px; text-align: left; line-height: 1.5; }
+    .mood-card .mood-label { display: block; font-weight: 700; font-size: .78rem; letter-spacing: .6px; text-transform: uppercase; opacity: .75; margin-bottom: 6px; }
+
+    .privacy-strip { padding: 60px 24px; background: var(--bg); text-align: center; }
+    .privacy-strip h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+    .privacy-strip p { color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
+    .privacy-items { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; max-width: 800px; margin: 36px auto 0; }
+    .privacy-item { display: flex; align-items: flex-start; gap: 10px; text-align: left; max-width: 220px; }
+    .privacy-item .pi-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .privacy-item .pi-text { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+    .privacy-item .pi-text strong { display: block; color: var(--text); font-size: .9rem; margin-bottom: 2px; }
+
+    footer { background: var(--dark); color: rgba(255,255,255,.5); padding: 48px 32px 32px; text-align: center; }
+    .footer-logo { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 16px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .footer-links a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: .78rem; }
+
+    @media (max-width: 600px) { nav { padding: 0 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-back">← yayayoo</a>
+    <div class="nav-logo">Givr<span>ó</span></div>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button id="btn-fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button id="btn-en" onclick="setLang('en')" title="English">🇬🇧</button>
+      </div>
+      <a class="nav-cta" href="https://apps.apple.com/app/givro" data-i18n="nav.download">Télécharger</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge" data-i18n="hero.badge">❄️ Disponible sur l'App Store</div>
+    <h1 data-i18n="hero.title">Rafraîchis ta nuit,<br><span class="gradient">naturellement.</span></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Givró analyse la météo de la nuit et te dit exactement quand ouvrir tes fenêtres pour rafraîchir ton logement — sans clim, juste avec l'air du dehors.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://apps.apple.com/app/givro">
+        <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <span data-i18n="hero.cta">App Store</span>
+      </a>
+      <a class="btn-secondary" href="#features" data-i18n="hero.more">En savoir plus</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="features.tag">Fonctionnalités</span>
+      <h2 data-i18n="features.title">La fraîcheur, au bon moment.</h2>
+      <p data-i18n="features.sub">Givró fait le calcul à ta place. Tu n'as qu'à suivre le plan.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#EFF8FF;">🌡️</div>
+        <h3 data-i18n="f1.title">Prévisions horaires</h3>
+        <p data-i18n="f1.body">Givró récupère les températures heure par heure via Open-Meteo — gratuit, précis, sans compte requis. Données actualisées à chaque ouverture.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#E8F8F8;">❄️</div>
+        <h3 data-i18n="f2.title">Plan de ventilation</h3>
+        <p data-i18n="f2.body">Heure d'ouverture, heure de fermeture, point le plus frais de la nuit. Givró calcule la fenêtre optimale selon ton seuil de confort.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#EFF8FF;">📅</div>
+        <h3 data-i18n="f3.title">3 nuits à l'avance</h3>
+        <p data-i18n="f3.body">Un aperçu compact des prochaines nuits : ❄️ créneau frais disponible, 🥵 trop chaud. Parfait pour anticiper les nuits de canicule.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#F0FFF5;">🏠</div>
+        <h3 data-i18n="f4.title">Capteur HomeKit</h3>
+        <p data-i18n="f4.body">Compatible avec les capteurs HomeKit (Eve Room, Aqara…). Givró lit ta température intérieure en temps réel et affine le calcul automatiquement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#F5F0FF;">🔔</div>
+        <h3 data-i18n="f5.title">Alertes Time Sensitive</h3>
+        <p data-i18n="f5.body">Les notifications Givró percent les modes Focus et Sommeil. Tu es prévenu au bon moment — même si ton iPhone est en mode Ne pas déranger.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#E8F8F8;">📊</div>
+        <h3 data-i18n="f6.title">Courbes de température</h3>
+        <p data-i18n="f6.body">Visualise la nuit en un coup d'œil : courbe extérieure, seuil de confort, température intérieure, zone de ventilation recommandée.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="moods-section">
+    <h2 data-i18n="moods.title">Givró a du caractère ❄️</h2>
+    <p data-i18n="moods.sub">Selon l'heure et la situation, ta mascotte change d'humeur. 7 états différents pour t'accompagner tout au long de la nuit.</p>
+    <div class="moods-grid">
+      <div class="mood-card"><span class="mood-label" data-i18n="m1.label">🥵 Avant la nuit</span><span data-i18n="m1.text">"Il fait chaud, mais ça va se rafraîchir. Tiens bon."</span></div>
+      <div class="mood-card"><span class="mood-label" data-i18n="m2.label">🌙 Bientôt l'heure</span><span data-i18n="m2.text">"Prépare-toi — dans 30 min tu peux ouvrir."</span></div>
+      <div class="mood-card"><span class="mood-label" data-i18n="m3.label">❄️ Ouvre maintenant</span><span data-i18n="m3.text">"L'air est frais dehors. Ouvre tout !"</span></div>
+      <div class="mood-card"><span class="mood-label" data-i18n="m4.label">😌 Fenêtres ouvertes</span><span data-i18n="m4.text">"Aahh, parfait. Profite de la fraîcheur."</span></div>
+      <div class="mood-card"><span class="mood-label" data-i18n="m5.label">🌅 Ça remonte</span><span data-i18n="m5.text">"Referme avant que ça chauffe — dépêche-toi !"</span></div>
+      <div class="mood-card"><span class="mood-label" data-i18n="m6.label">😔 Pas de chance</span><span data-i18n="m6.text">"Trop chaud cette nuit. Désolé…"</span></div>
+    </div>
+  </section>
+
+  <section class="privacy-strip">
+    <h2 data-i18n="privacy.title">Zéro donnée collectée 🔒</h2>
+    <p data-i18n="privacy.sub">Givró ne collecte aucune donnée personnelle. Tout reste sur ton appareil.</p>
+    <div class="privacy-items">
+      <div class="privacy-item"><span class="pi-icon">🌤️</span><div class="pi-text"><strong data-i18n="pi1.title">Météo anonyme</strong><span data-i18n="pi1.body">Les prévisions sont récupérées sans compte ni identifiant via Open-Meteo.</span></div></div>
+      <div class="privacy-item"><span class="pi-icon">📍</span><div class="pi-text"><strong data-i18n="pi2.title">Localisation locale</strong><span data-i18n="pi2.body">Ta position est utilisée uniquement pour obtenir la météo locale. Elle ne quitte jamais l'appareil.</span></div></div>
+      <div class="privacy-item"><span class="pi-icon">🏠</span><div class="pi-text"><strong data-i18n="pi3.title">HomeKit sur l'appareil</strong><span data-i18n="pi3.body">Les données de température intérieure restent dans HomeKit, sur ton appareil.</span></div></div>
+      <div class="privacy-item"><span class="pi-icon">🚫</span><div class="pi-text"><strong data-i18n="pi4.title">Aucun tracking</strong><span data-i18n="pi4.body">Pas de publicité, pas de SDK analytics, pas de compte utilisateur.</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Givró ❄️</div>
+    <div class="footer-links">
+      <a href="/givro/privacy" data-i18n="footer.privacy">Politique de confidentialité</a>
+      <a href="/givro/terms" data-i18n="footer.terms">Conditions d'utilisation</a>
+      <a href="/">← yayayoo</a>
+      <a href="mailto:defintelligence@proton.me">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Stéphane Desmets. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    const T = {
+      fr: {
+        'nav.download':'Télécharger','hero.badge':'❄️ Disponible sur l\'App Store',
+        'hero.title':'Rafraîchis ta nuit,<br><span class="gradient">naturellement.</span>',
+        'hero.sub':'Givró analyse la météo de la nuit et te dit exactement quand ouvrir tes fenêtres pour rafraîchir ton logement — sans clim, juste avec l\'air du dehors.',
+        'hero.cta':'App Store','hero.more':'En savoir plus',
+        'features.tag':'Fonctionnalités','features.title':'La fraîcheur, au bon moment.','features.sub':'Givró fait le calcul à ta place. Tu n\'as qu\'à suivre le plan.',
+        'f1.title':'Prévisions horaires','f1.body':'Givró récupère les températures heure par heure via Open-Meteo — gratuit, précis, sans compte requis. Données actualisées à chaque ouverture.',
+        'f2.title':'Plan de ventilation','f2.body':'Heure d\'ouverture, heure de fermeture, point le plus frais de la nuit. Givró calcule la fenêtre optimale selon ton seuil de confort.',
+        'f3.title':'3 nuits à l\'avance','f3.body':'Un aperçu compact des prochaines nuits : ❄️ créneau frais disponible, 🥵 trop chaud. Parfait pour anticiper les nuits de canicule.',
+        'f4.title':'Capteur HomeKit','f4.body':'Compatible avec les capteurs HomeKit (Eve Room, Aqara…). Givró lit ta température intérieure en temps réel et affine le calcul automatiquement.',
+        'f5.title':'Alertes Time Sensitive','f5.body':'Les notifications Givró percent les modes Focus et Sommeil. Tu es prévenu au bon moment — même si ton iPhone est en mode Ne pas déranger.',
+        'f6.title':'Courbes de température','f6.body':'Visualise la nuit en un coup d\'œil : courbe extérieure, seuil de confort, température intérieure, zone de ventilation recommandée.',
+        'moods.title':'Givró a du caractère ❄️','moods.sub':'Selon l\'heure et la situation, ta mascotte change d\'humeur. 7 états différents pour t\'accompagner tout au long de la nuit.',
+        'm1.label':'🥵 Avant la nuit','m1.text':'"Il fait chaud, mais ça va se rafraîchir. Tiens bon."',
+        'm2.label':'🌙 Bientôt l\'heure','m2.text':'"Prépare-toi — dans 30 min tu peux ouvrir."',
+        'm3.label':'❄️ Ouvre maintenant','m3.text':'"L\'air est frais dehors. Ouvre tout !"',
+        'm4.label':'😌 Fenêtres ouvertes','m4.text':'"Aahh, parfait. Profite de la fraîcheur."',
+        'm5.label':'🌅 Ça remonte','m5.text':'"Referme avant que ça chauffe — dépêche-toi !"',
+        'm6.label':'😔 Pas de chance','m6.text':'"Trop chaud cette nuit. Désolé…"',
+        'privacy.title':'Zéro donnée collectée 🔒','privacy.sub':'Givró ne collecte aucune donnée personnelle. Tout reste sur ton appareil.',
+        'pi1.title':'Météo anonyme','pi1.body':'Les prévisions sont récupérées sans compte ni identifiant via Open-Meteo.',
+        'pi2.title':'Localisation locale','pi2.body':'Ta position est utilisée uniquement pour obtenir la météo locale. Elle ne quitte jamais l\'appareil.',
+        'pi3.title':'HomeKit sur l\'appareil','pi3.body':'Les données de température intérieure restent dans HomeKit, sur ton appareil.',
+        'pi4.title':'Aucun tracking','pi4.body':'Pas de publicité, pas de SDK analytics, pas de compte utilisateur.',
+        'footer.privacy':'Politique de confidentialité','footer.terms':'Conditions d\'utilisation'
+      },
+      en: {
+        'nav.download':'Download','hero.badge':'❄️ Available on the App Store',
+        'hero.title':'Cool your night,<br><span class="gradient">naturally.</span>',
+        'hero.sub':'Givró analyzes the night weather and tells you exactly when to open your windows to cool your home — no AC, just fresh outdoor air.',
+        'hero.cta':'App Store','hero.more':'Learn more',
+        'features.tag':'Features','features.title':'The right cool, at the right time.','features.sub':'Givró does the math. You just follow the plan.',
+        'f1.title':'Hourly forecasts','f1.body':'Givró fetches hour-by-hour temperatures via Open-Meteo — free, accurate, no account needed. Refreshed every time you open the app.',
+        'f2.title':'Ventilation plan','f2.body':'Opening time, closing time, coldest point of the night. Givró calculates the optimal window based on your comfort threshold.',
+        'f3.title':'3 nights ahead','f3.body':'A compact overview of upcoming nights: ❄️ cool window available, 🥵 too hot. Perfect for planning ahead during heat waves.',
+        'f4.title':'HomeKit sensor','f4.body':'Compatible with HomeKit sensors (Eve Room, Aqara…). Givró reads your indoor temperature in real time and refines its calculation automatically.',
+        'f5.title':'Time Sensitive alerts','f5.body':'Givró notifications break through Focus and Sleep modes. You\'re notified at the right moment — even if your iPhone is on Do Not Disturb.',
+        'f6.title':'Temperature charts','f6.body':'Visualize the night at a glance: outdoor curve, comfort threshold, indoor temperature, recommended ventilation zone.',
+        'moods.title':'Givró has personality ❄️','moods.sub':'Depending on the time and situation, your mascot changes mood. 7 different states to guide you through the night.',
+        'm1.label':'🥵 Before the night','m1.text':'"It\'s hot, but it\'ll cool down. Hang in there."',
+        'm2.label':'🌙 Almost time','m2.text':'"Get ready — you can open in 30 min."',
+        'm3.label':'❄️ Open now','m3.text':'"The air is cool outside. Open everything!"',
+        'm4.label':'😌 Windows open','m4.text':'"Aahh, perfect. Enjoy the coolness."',
+        'm5.label':'🌅 It\'s warming up','m5.text':'"Close before it heats up — hurry!"',
+        'm6.label':'😔 No luck','m6.text':'"Too hot tonight. Sorry…"',
+        'privacy.title':'Zero data collected 🔒','privacy.sub':'Givró collects no personal data. Everything stays on your device.',
+        'pi1.title':'Anonymous weather','pi1.body':'Forecasts are fetched without an account or identifier via Open-Meteo.',
+        'pi2.title':'Local location','pi2.body':'Your location is used only to get local weather. It never leaves your device.',
+        'pi3.title':'HomeKit on-device','pi3.body':'Indoor temperature data stays in HomeKit, on your device.',
+        'pi4.title':'No tracking','pi4.body':'No ads, no analytics SDK, no user account.',
+        'footer.privacy':'Privacy Policy','footer.terms':'Terms of Use'
+      }
+    };
+    function setLang(l) {
+      document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[l][el.dataset.i18n]; if (v !== undefined) el.innerHTML = v; });
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+      document.documentElement.lang = l;
+      document.title = l === 'fr' ? 'Givró — Rafraîchis ta nuit, naturellement.' : 'Givró — Cool your night, naturally.';
+      localStorage.setItem('lang', l);
+    }
+    setLang(localStorage.getItem('lang') || 'fr');
+  </script>
+</body>
+</html>
