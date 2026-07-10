@@ -65,6 +65,28 @@
     .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -.5px; line-height: 1.1; }
     .section-header p { margin-top: 12px; color: var(--muted); font-size: 1.05rem; max-width: 480px; margin-inline: auto; line-height: 1.6; }
 
+    /* Screenshots */
+    .screenshots { padding: 80px 24px; background: var(--bg); }
+    .screenshots-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    .screen-slot { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .screen-frame {
+      width: 148px; height: 268px; border-radius: 30px;
+      background: #dde2e8;
+      border: 2px solid #c8cdd4;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; padding: 16px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .screen-frame::before {
+      content: ""; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 44px; height: 6px; background: #b8bec6; border-radius: 4px;
+    }
+    .screen-frame .screen-icon { font-size: 2rem; margin-top: 16px; }
+    .screen-frame .screen-text { font-size: .7rem; color: #8a9099; line-height: 1.4; }
+    .screen-label { font-size: .8rem; font-weight: 600; color: var(--text); text-align: center; max-width: 148px; }
+    .screen-caption { font-size: .72rem; color: var(--muted); text-align: center; max-width: 148px; }
+
+    /* Features */
     .features { padding: 100px 24px; background: #fff; }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
     .feature-card { background: var(--bg); border-radius: 20px; padding: 32px 28px; transition: transform .2s; }
@@ -72,6 +94,7 @@
     .feature-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 16px; }
     .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
     .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+    .pro-badge { display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; background: rgba(0,122,255,.12); color: var(--blue); border: 1px solid rgba(0,122,255,.2); padding: 2px 8px; border-radius: 8px; margin-left: 6px; vertical-align: middle; }
 
     .moods-section { padding: 100px 24px; background: linear-gradient(135deg, #007AFF 0%, #32ADE6 50%, #5AC8FA 100%); color: #fff; text-align: center; }
     .moods-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 16px; }
@@ -96,7 +119,7 @@
     .footer-links a:hover { color: #fff; }
     .footer-copy { font-size: .78rem; }
 
-    @media (max-width: 600px) { nav { padding: 0 20px; } }
+    @media (max-width: 600px) { nav { padding: 0 20px; } .screen-frame { width: 120px; height: 216px; } }
   </style>
 </head>
 <body>
@@ -126,6 +149,57 @@
     </div>
   </section>
 
+  <!-- SCREENSHOTS — remplacer les placeholders par de vraies captures après publication -->
+  <section class="screenshots" id="screenshots">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="screens.tag">Aperçu</span>
+      <h2 data-i18n="screens.title">L'app en images</h2>
+      <p data-i18n="screens.sub">Captures disponibles dès la sortie sur l'App Store.</p>
+    </div>
+    <div class="screenshots-row">
+      <div class="screen-slot">
+        <div class="screen-frame">
+          <span class="screen-icon">❄️</span>
+          <span class="screen-text" data-i18n="sc1.ph">Écran principal — créneau frais</span>
+        </div>
+        <div class="screen-label" data-i18n="sc1.label">Ouvre au bon moment</div>
+        <div class="screen-caption" data-i18n="sc1.cap">Givró calcule le créneau frais</div>
+      </div>
+      <div class="screen-slot">
+        <div class="screen-frame">
+          <span class="screen-icon">📈</span>
+          <span class="screen-text" data-i18n="sc2.ph">Courbe de nuit détaillée</span>
+        </div>
+        <div class="screen-label" data-i18n="sc2.label">La courbe de ta nuit</div>
+        <div class="screen-caption" data-i18n="sc2.cap">Extérieur, seuil, intérieur</div>
+      </div>
+      <div class="screen-slot">
+        <div class="screen-frame">
+          <span class="screen-icon">📅</span>
+          <span class="screen-text" data-i18n="sc3.ph">Aperçu 3 nuits</span>
+        </div>
+        <div class="screen-label" data-i18n="sc3.label">3 nuits d'avance</div>
+        <div class="screen-caption" data-i18n="sc3.cap">Planifie les nuits clémentes</div>
+      </div>
+      <div class="screen-slot">
+        <div class="screen-frame">
+          <span class="screen-icon">⭐</span>
+          <span class="screen-text" data-i18n="sc4.ph">Givró Pro</span>
+        </div>
+        <div class="screen-label" data-i18n="sc4.label">Givró Pro</div>
+        <div class="screen-caption" data-i18n="sc4.cap">Un achat unique, sans abonnement</div>
+      </div>
+      <div class="screen-slot">
+        <div class="screen-frame">
+          <span class="screen-icon">📱</span>
+          <span class="screen-text" data-i18n="sc5.ph">Widget écran d'accueil</span>
+        </div>
+        <div class="screen-label" data-i18n="sc5.label">Toujours sous la main</div>
+        <div class="screen-caption" data-i18n="sc5.cap">Widget petit ou moyen</div>
+      </div>
+    </div>
+  </section>
+
   <section class="features" id="features">
     <div class="section-header">
       <span class="section-tag" data-i18n="features.tag">Fonctionnalités</span>
@@ -146,7 +220,12 @@
       <div class="feature-card">
         <div class="feature-icon" style="background:#EFF8FF;">📅</div>
         <h3 data-i18n="f3.title">3 nuits à l'avance</h3>
-        <p data-i18n="f3.body">Un aperçu compact des prochaines nuits : ❄️ créneau frais disponible, 🥵 trop chaud. Parfait pour anticiper les nuits de canicule.</p>
+        <p data-i18n="f3.body">Un aperçu compact des prochaines nuits : créneau frais disponible ou nuit trop chaude. Parfait pour anticiper et planifier pendant la canicule.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#F0F5FF;">🟦</div>
+        <h3 data-i18n="f7.title">Widget écran d'accueil</h3>
+        <p data-i18n="f7.body">Petit ou moyen, le widget Givró affiche l'essentiel d'un coup d'œil : heure d'ouverture, température, et les 3 prochaines nuits. Mis à jour automatiquement.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon" style="background:#F0FFF5;">🏠</div>
@@ -162,6 +241,11 @@
         <div class="feature-icon" style="background:#E8F8F8;">📊</div>
         <h3 data-i18n="f6.title">Courbes de température</h3>
         <p data-i18n="f6.body">Visualise la nuit en un coup d'œil : courbe extérieure, seuil de confort, température intérieure, zone de ventilation recommandée.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#EFF4FF;">⭐</div>
+        <h3 data-i18n="f8.title">Givró Pro <span class="pro-badge">Achat unique</span></h3>
+        <p data-i18n="f8.body">Soutiens l'app et débloque l'historique illimité, la prévision 3 nuits complète, et une icône alternative. Un achat unique, aucun abonnement.</p>
       </div>
     </div>
   </section>
@@ -208,13 +292,21 @@
         'hero.title':'Rafraîchis ta nuit,<br><span class="gradient">naturellement.</span>',
         'hero.sub':'Givró analyse la météo de la nuit et te dit exactement quand ouvrir tes fenêtres pour rafraîchir ton logement — sans clim, juste avec l\'air du dehors.',
         'hero.cta':'App Store','hero.more':'En savoir plus',
+        'screens.tag':'Aperçu','screens.title':'L\'app en images','screens.sub':'Captures disponibles dès la sortie sur l\'App Store.',
+        'sc1.ph':'Écran principal — créneau frais','sc1.label':'Ouvre au bon moment','sc1.cap':'Givró calcule le créneau frais de ta nuit',
+        'sc2.ph':'Courbe de nuit détaillée','sc2.label':'La courbe de ta nuit','sc2.cap':'Extérieur, seuil, intérieur — tout d\'un coup d\'œil',
+        'sc3.ph':'Aperçu 3 nuits','sc3.label':'3 nuits d\'avance','sc3.cap':'Planifie les nuits clémentes de la semaine',
+        'sc4.ph':'Givró Pro','sc4.label':'Givró Pro','sc4.cap':'Un achat unique, sans abonnement',
+        'sc5.ph':'Widget écran d\'accueil','sc5.label':'Toujours sous la main','sc5.cap':'Widget petit ou moyen, au choix',
         'features.tag':'Fonctionnalités','features.title':'La fraîcheur, au bon moment.','features.sub':'Givró fait le calcul à ta place. Tu n\'as qu\'à suivre le plan.',
         'f1.title':'Prévisions horaires','f1.body':'Givró récupère les températures heure par heure via Open-Meteo — gratuit, précis, sans compte requis. Données actualisées à chaque ouverture.',
         'f2.title':'Plan de ventilation','f2.body':'Heure d\'ouverture, heure de fermeture, point le plus frais de la nuit. Givró calcule la fenêtre optimale selon ton seuil de confort.',
-        'f3.title':'3 nuits à l\'avance','f3.body':'Un aperçu compact des prochaines nuits : ❄️ créneau frais disponible, 🥵 trop chaud. Parfait pour anticiper les nuits de canicule.',
+        'f3.title':'3 nuits à l\'avance','f3.body':'Un aperçu compact des prochaines nuits : créneau frais disponible ou nuit trop chaude. Parfait pour anticiper et planifier pendant la canicule.',
         'f4.title':'Capteur HomeKit','f4.body':'Compatible avec les capteurs HomeKit (Eve Room, Aqara…). Givró lit ta température intérieure en temps réel et affine le calcul automatiquement.',
         'f5.title':'Alertes Time Sensitive','f5.body':'Les notifications Givró percent les modes Focus et Sommeil. Tu es prévenu au bon moment — même si ton iPhone est en mode Ne pas déranger.',
         'f6.title':'Courbes de température','f6.body':'Visualise la nuit en un coup d\'œil : courbe extérieure, seuil de confort, température intérieure, zone de ventilation recommandée.',
+        'f7.title':'Widget écran d\'accueil','f7.body':'Petit ou moyen, le widget Givró affiche l\'essentiel d\'un coup d\'œil : heure d\'ouverture, température, et les 3 prochaines nuits. Mis à jour automatiquement.',
+        'f8.title':'Givró Pro','f8.body':'Soutiens l\'app et débloque l\'historique illimité, la prévision 3 nuits complète, et une icône alternative. Un achat unique, aucun abonnement.',
         'moods.title':'Givró a du caractère ❄️','moods.sub':'Selon l\'heure et la situation, ta mascotte change d\'humeur. 7 états différents pour t\'accompagner tout au long de la nuit.',
         'm1.label':'🥵 Avant la nuit','m1.text':'"Il fait chaud, mais ça va se rafraîchir. Tiens bon."',
         'm2.label':'🌙 Bientôt l\'heure','m2.text':'"Prépare-toi — dans 30 min tu peux ouvrir."',
@@ -234,13 +326,21 @@
         'hero.title':'Cool your night,<br><span class="gradient">naturally.</span>',
         'hero.sub':'Givró analyzes the night weather and tells you exactly when to open your windows to cool your home — no AC, just fresh outdoor air.',
         'hero.cta':'App Store','hero.more':'Learn more',
+        'screens.tag':'Preview','screens.title':'The app in pictures','screens.sub':'Screenshots available once published on the App Store.',
+        'sc1.ph':'Main screen — cool window','sc1.label':'Open at the right time','sc1.cap':'Givró calculates the cool window',
+        'sc2.ph':'Detailed night chart','sc2.label':'Your night curve','sc2.cap':'Outdoor, threshold, indoor at a glance',
+        'sc3.ph':'3-night overview','sc3.label':'3 nights ahead','sc3.cap':'Plan the cool nights of the week',
+        'sc4.ph':'Givró Pro','sc4.label':'Givró Pro','sc4.cap':'A one-time purchase, no subscription',
+        'sc5.ph':'Home screen widget','sc5.label':'Always at hand','sc5.cap':'Small or medium widget',
         'features.tag':'Features','features.title':'The right cool, at the right time.','features.sub':'Givró does the math. You just follow the plan.',
         'f1.title':'Hourly forecasts','f1.body':'Givró fetches hour-by-hour temperatures via Open-Meteo — free, accurate, no account needed. Refreshed every time you open the app.',
         'f2.title':'Ventilation plan','f2.body':'Opening time, closing time, coldest point of the night. Givró calculates the optimal window based on your comfort threshold.',
-        'f3.title':'3 nights ahead','f3.body':'A compact overview of upcoming nights: ❄️ cool window available, 🥵 too hot. Perfect for planning ahead during heat waves.',
+        'f3.title':'3 nights ahead','f3.body':'A compact overview of upcoming nights: cool window available or too hot. Perfect for planning ahead during heat waves.',
         'f4.title':'HomeKit sensor','f4.body':'Compatible with HomeKit sensors (Eve Room, Aqara…). Givró reads your indoor temperature in real time and refines its calculation automatically.',
         'f5.title':'Time Sensitive alerts','f5.body':'Givró notifications break through Focus and Sleep modes. You\'re notified at the right moment — even if your iPhone is on Do Not Disturb.',
         'f6.title':'Temperature charts','f6.body':'Visualize the night at a glance: outdoor curve, comfort threshold, indoor temperature, recommended ventilation zone.',
+        'f7.title':'Home screen widget','f7.body':'Small or medium, the Givró widget shows what matters at a glance: opening time, temperature, and the next 3 nights. Updated automatically.',
+        'f8.title':'Givró Pro','f8.body':'Support the app and unlock unlimited history, the full 3-night forecast, and an alternate icon. One-time purchase, no subscription.',
         'moods.title':'Givró has personality ❄️','moods.sub':'Depending on the time and situation, your mascot changes mood. 7 different states to guide you through the night.',
         'm1.label':'🥵 Before the night','m1.text':'"It\'s hot, but it\'ll cool down. Hang in there."',
         'm2.label':'🌙 Almost time','m2.text':'"Get ready — you can open in 30 min."',
