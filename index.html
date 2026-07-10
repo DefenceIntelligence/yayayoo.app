@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>yayayoo — Des apps qui font sourire</title>
-  <meta name="description" content="yayayoo est un studio indépendant qui crée des apps iPhone simples, soignées et amusantes. Découvrez Versusly et Almostly." />
+  <meta name="description" content="yayayoo est un studio indépendant qui crée des apps iPhone simples, soignées et amusantes. Découvrez Versusly, Almostly et Givró." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='14' fill='%231C1C1E'/><circle cx='17' cy='20' r='4' fill='%23FF6B6B'/><circle cx='18.2' cy='21.2' r='1.8' fill='white'/><circle cx='31' cy='20' r='4' fill='%234D96FF'/><circle cx='32.2' cy='21.2' r='1.8' fill='white'/><path d='M15 29 Q24 37 33 29' stroke='%23FFD93D' stroke-width='2.5' stroke-linecap='round' fill='none'/></svg>" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -200,6 +200,18 @@
     .app-cta:hover { opacity: .8; }
     .versusly .app-cta { background: rgba(255,59,48,.15); color: var(--red); border: 1px solid rgba(255,59,48,.25); }
     .almostly .app-cta { background: rgba(255,107,53,.15); color: var(--orange); border: 1px solid rgba(255,107,53,.25); }
+    .app-card.givro { border-color: rgba(50,173,230,.2); }
+    .app-card.givro:hover { border-color: rgba(50,173,230,.45); }
+    .app-card.givro::before {
+      content: ''; position: absolute;
+      top: -60px; right: -60px; width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(50,173,230,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .givro .app-icon { background: linear-gradient(135deg, #007AFF, #32ADE6); }
+    .givro .dot { background: #32ADE6; }
+    .givro .app-cta { background: rgba(50,173,230,.15); color: #32ADE6; border: 1px solid rgba(50,173,230,.25); }
     .app-cta svg { transition: transform .2s; }
     .app-card:hover .app-cta svg { transform: translateX(3px); }
 
@@ -403,6 +415,31 @@
         </div>
       </a>
 
+
+      <!-- Givró -->
+      <a href="/givro" class="app-card givro">
+        <div class="app-header">
+          <div class="app-icon">❄️</div>
+          <div>
+            <div class="app-name">Givró</div>
+            <div class="app-cat" data-i18n="givro_cat">Météo · Ventilation nocturne</div>
+          </div>
+        </div>
+        <p class="app-desc" data-i18n="givro_desc">Ton assistant nuit pendant les canicules. Givró analyse la météo heure par heure et te dit exactement quand ouvrir tes fenêtres pour rafraîchir sans clim.</p>
+        <div class="app-features">
+          <div class="app-feature"><span class="dot"></span><span data-i18n="g_f1">Créneau de ventilation calculé heure par heure</span></div>
+          <div class="app-feature"><span class="dot"></span><span data-i18n="g_f2">Alertes Time Sensitive · Widget écran d'accueil</span></div>
+          <div class="app-feature"><span class="dot"></span><span data-i18n="g_f3">Capteur HomeKit · Aperçu 3 nuits</span></div>
+        </div>
+        <div class="app-footer-row">
+          <span class="app-price" data-i18n="givro_price">Gratuit · Givró Pro 0,99 €</span>
+          <a href="/givro" class="app-cta">
+            <span data-i18n="cta">Découvrir</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -444,6 +481,13 @@
             <a href="/almostly/terms" data-i18n="f_terms">Conditions</a>
           </div>
         </div>
+        <div class="footer-apps-group">
+          <span class="footer-app-name">Givró</span>
+          <div class="footer-links">
+            <a href="/givro/privacy" data-i18n="f_privacy">Confidentialité</a>
+            <a href="/givro/terms" data-i18n="f_terms">Conditions</a>
+          </div>
+        </div>
       </div>
 
       <div class="footer-contact">
@@ -472,7 +516,7 @@
         sub:             "Simple. Soigné. Amusant.",
         scroll:          "Découvrir",
         apps_tag:        "Nos apps",
-        apps_title:      "Deux apps,\ndeux univers.",
+        apps_title:      "Trois apps,\ntrois univers.",
         versusly_cat:    "Jeux · 2 joueurs",
         versusly_desc:   "Le jeu qui met l'amitié à l'épreuve. 2 joueurs, 1 iPhone, 6 mini-jeux en split-screen — sans Bluetooth, sans setup, sans pitié.",
         v_f1:            "6 mini-jeux : Réflexe, Tir à la corde, Calcul éclair…",
@@ -485,6 +529,12 @@
         a_f2:            "Pip, la mascotte qui commente tes événements",
         a_f3:            "Widgets, Dynamic Island & Apple Watch",
         almostly_price:  "Gratuit · Almostly Plus 2,99 €",
+        givro_cat:       "Météo · Ventilation nocturne",
+        givro_desc:      "Ton assistant nuit pendant les canicules. Givró analyse la météo heure par heure et te dit exactement quand ouvrir tes fenêtres pour rafraîchir sans clim.",
+        g_f1:            "Créneau de ventilation calculé heure par heure",
+        g_f2:            "Alertes Time Sensitive · Widget écran d'accueil",
+        g_f3:            "Capteur HomeKit · Aperçu 3 nuits",
+        givro_price:     "Gratuit · Givró Pro 0,99 €",
         cta:             "Découvrir",
         studio_title:    "Fait avec soin,\npar une seule personne.",
         studio_p1:       "yayayoo est un studio solo fondé par Stéphane Desmets. Chaque app est conçue, développée et maintenue avec soin — sans équipe marketing, sans dark patterns, sans abonnements inutiles.",
@@ -499,7 +549,7 @@
         sub:             "Simple. Polished. Fun.",
         scroll:          "Discover",
         apps_tag:        "Our apps",
-        apps_title:      "Two apps,\ntwo worlds.",
+        apps_title:      "Three apps,\nthree worlds.",
         versusly_cat:    "Games · 2 players",
         versusly_desc:   "The game that puts friendships to the test. 2 players, 1 iPhone, 6 split-screen mini-games — no Bluetooth, no setup, no mercy.",
         v_f1:            "6 mini-games: Reflex, Tug of War, Math Blitz…",
@@ -512,6 +562,12 @@
         a_f2:            "Pip, the mascot who comments on your events",
         a_f3:            "Widgets, Dynamic Island & Apple Watch",
         almostly_price:  "Free · Almostly Plus €2.99",
+        givro_cat:       "Weather · Night ventilation",
+        givro_desc:      "Your night assistant during heat waves. Givró analyzes the weather hour by hour and tells you exactly when to open your windows to cool down without AC.",
+        g_f1:            "Ventilation window calculated hour by hour",
+        g_f2:            "Time Sensitive alerts · Home screen widget",
+        g_f3:            "HomeKit sensor · 3-night overview",
+        givro_price:     "Free · Givró Pro €0.99",
         cta:             "Discover",
         studio_title:    "Made with care,\nby one person.",
         studio_p1:       "yayayoo is a solo studio founded by Stéphane Desmets. Every app is designed, built, and maintained with care — no marketing team, no dark patterns, no pointless subscriptions.",
