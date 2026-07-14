@@ -200,7 +200,18 @@
     .app-cta:hover { opacity: .8; }
     .versusly .app-cta { background: rgba(255,59,48,.15); color: var(--red); border: 1px solid rgba(255,59,48,.25); }
     .almostly .app-cta { background: rgba(255,107,53,.15); color: var(--orange); border: 1px solid rgba(255,107,53,.25); }
-    .app-card.givro { border-color: rgba(50,173,230,.2); }
+    .app-card.killchain { border-color: rgba(51,255,102,.18); }
+    .app-card.killchain:hover { border-color: rgba(51,255,102,.45); }
+    .app-card.killchain::before {
+      content: ''; position: absolute;
+      top: -60px; right: -40px; width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(51,255,102,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+
+        .app-card.givro { border-color: rgba(50,173,230,.2); }
     .app-card.givro:hover { border-color: rgba(50,173,230,.45); }
     .app-card.givro::before {
       content: ''; position: absolute;
@@ -363,7 +374,7 @@
   <!-- APPS -->
   <section class="apps-section">
     <p class="section-tag" data-i18n="apps_tag">Nos apps</p>
-    <h2 class="section-title" data-i18n="apps_title">Deux apps,<br>deux univers.</h2>
+    <h2 class="section-title" data-i18n="apps_title">Des apps qui<br>font sourire.</h2>
 
     <div class="apps-grid">
 
@@ -440,6 +451,25 @@
         </div>
       </a>
 
+      <a href="/kill-chain" class="app-card killchain">
+        <div>
+          <p class="app-eyebrow" data-i18n="killchain_tag" style="font-family:'SF Mono','Fira Code',monospace;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a7a5a;margin-bottom:8px;">Tactique · 2-4 joueurs</p>
+          <h3 class="app-name" data-i18n="killchain_name" style="font-family:'SF Mono','Fira Code',monospace;font-size:1.8rem;font-weight:900;letter-spacing:2px;color:#33ff66;margin-bottom:8px;">KILL_CHAIN</h3>
+          <p class="app-desc" data-i18n="killchain_desc" style="font-size:.95rem;color:#6E6E73;margin-bottom:24px;">Hacker tactics, terminal screen. Programmez en secret, exécutez simultanément.</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:28px;">
+            <li style="font-size:.85rem;color:#4a7a5a;font-family:'SF Mono',monospace;">▸ 6 classes · Pass-and-Play · ASYNC</li>
+            <li style="font-size:.85rem;color:#4a7a5a;font-family:'SF Mono',monospace;">▸ 2-4 joueurs · 1 téléphone</li>
+            <li style="font-size:.85rem;color:#4a7a5a;font-family:'SF Mono',monospace;">▸ Gratuit + PRO 2,99€</li>
+          </ul>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <a href="/kill-chain" class="app-cta" style="display:inline-flex;align-items:center;gap:6px;font-size:.9rem;font-weight:700;color:#33ff66;text-decoration:none;font-family:'SF Mono',monospace;" data-i18n="killchain_cta">
+            Découvrir
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+      </a>
+
     </div>
   </section>
 
@@ -486,6 +516,11 @@
           <div class="footer-links">
             <a href="/givro/privacy" data-i18n="f_privacy">Confidentialité</a>
             <a href="/givro/terms" data-i18n="f_terms">Conditions</a>
+          </div>
+          <div>
+            <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;color:#6E6E73;margin-bottom:6px;font-family:'SF Mono',monospace;">KILL_CHAIN</p>
+            <a href="/kill-chain/privacy" data-i18n="f_privacy">Confidentialité</a>
+            <a href="/kill-chain/terms" data-i18n="f_terms">Conditions</a>
           </div>
         </div>
       </div>
