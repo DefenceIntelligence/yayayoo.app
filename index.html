@@ -223,6 +223,9 @@
     .givro .app-icon { background: linear-gradient(135deg, #007AFF, #32ADE6); }
     .givro .dot { background: #32ADE6; }
     .givro .app-cta { background: rgba(50,173,230,.15); color: #32ADE6; border: 1px solid rgba(50,173,230,.25); }
+    .killchain .app-icon { background: linear-gradient(135deg, #0a1a0a, #162a16); border: 1px solid rgba(51,255,102,.25); }
+    .killchain .dot { background: #33ff66; }
+    .killchain .app-cta { background: rgba(51,255,102,.12); color: #33ff66; border: 1px solid rgba(51,255,102,.25); }
     .app-cta svg { transition: transform .2s; }
     .app-card:hover .app-cta svg { transform: translateX(3px); }
 
@@ -452,20 +455,26 @@
       </a>
 
       <a href="/kill-chain" class="app-card killchain">
-        <div>
-          <p class="app-eyebrow" data-i18n="killchain_tag" style="font-family:'SF Mono','Fira Code',monospace;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4a7a5a;margin-bottom:8px;">Tactique · 2-4 joueurs</p>
-          <h3 class="app-name" data-i18n="killchain_name" style="font-family:'SF Mono','Fira Code',monospace;font-size:1.8rem;font-weight:900;letter-spacing:2px;color:#33ff66;margin-bottom:8px;">KILL_CHAIN</h3>
-          <p class="app-desc" data-i18n="killchain_desc" style="font-size:.95rem;color:#6E6E73;margin-bottom:24px;">Hacker tactics, terminal screen. Programmez en secret, exécutez simultanément.</p>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:28px;">
-            <li style="font-size:.85rem;color:#4a7a5a;font-family:'SF Mono',monospace;">▸ 6 classes · Pass-and-Play · ASYNC</li>
-            <li style="font-size:.85rem;color:#4a7a5a;font-family:'SF Mono',monospace;">▸ 2-4 joueurs · 1 téléphone</li>
-            <li style="font-size:.85rem;color:#4a7a5a;font-family:'SF Mono',monospace;">▸ Gratuit + PRO 2,99€</li>
-          </ul>
+        <div class="app-header">
+          <div class="app-icon">⛓️</div>
+          <div>
+            <div class="app-name" data-i18n="killchain_name" style="font-family:'SF Mono','Fira Code',monospace;letter-spacing:2px;color:#33ff66;">KILL_CHAIN</div>
+            <div class="app-cat" data-i18n="killchain_tag">Tactique · 2–4 joueurs</div>
+          </div>
         </div>
-        <a href="/kill-chain" class="app-cta" data-i18n="killchain_cta">
-            Découvrir
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        <p class="app-desc" data-i18n="killchain_desc">Hacker tactics, terminal screen. Programmez en secret, exécutez simultanément.</p>
+        <div class="app-features">
+          <div class="app-feature"><span class="dot"></span><span data-i18n="kc_f1">6 classes · Pass-and-Play · ASYNC</span></div>
+          <div class="app-feature"><span class="dot"></span><span data-i18n="kc_f2">2–4 joueurs · 1 téléphone</span></div>
+          <div class="app-feature"><span class="dot"></span><span data-i18n="kc_f3">Gratuit + Kill Chain Pro 2,99 €</span></div>
+        </div>
+        <div class="app-footer-row">
+          <span class="app-price" data-i18n="killchain_price">Gratuit · Kill Chain Pro 2,99 €</span>
+          <a href="/kill-chain" class="app-cta">
+            <span data-i18n="cta">Découvrir</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
+        </div>
       </a>
 
     </div>
@@ -515,8 +524,10 @@
             <a href="/givro/privacy" data-i18n="f_privacy">Confidentialité</a>
             <a href="/givro/terms" data-i18n="f_terms">Conditions</a>
           </div>
-          <div>
-            <p style="font-size:.75rem;font-weight:700;letter-spacing:1px;color:#6E6E73;margin-bottom:6px;font-family:'SF Mono',monospace;">KILL_CHAIN</p>
+        </div>
+        <div class="footer-apps-group">
+          <span class="footer-app-name">Kill Chain</span>
+          <div class="footer-links">
             <a href="/kill-chain/privacy" data-i18n="f_privacy">Confidentialité</a>
             <a href="/kill-chain/terms" data-i18n="f_terms">Conditions</a>
           </div>
@@ -568,6 +579,13 @@
         g_f2:            "Alertes Time Sensitive · Widget écran d'accueil",
         g_f3:            "Capteur HomeKit · Aperçu 3 nuits",
         givro_price:     "Gratuit · Givró Pro 0,99 €",
+        killchain_tag:   "Tactique · 2–4 joueurs",
+        killchain_name:  "KILL_CHAIN",
+        killchain_desc:  "Hacker tactics, terminal screen. Programmez en secret, exécutez simultanément.",
+        kc_f1:           "6 classes · Pass-and-Play · ASYNC",
+        kc_f2:           "2–4 joueurs · 1 téléphone",
+        kc_f3:           "Gratuit + Kill Chain Pro 2,99 €",
+        killchain_price: "Gratuit · Kill Chain Pro 2,99 €",
         cta:             "Découvrir",
         studio_title:    "Fait avec soin,\npar une seule personne.",
         studio_p1:       "yayayoo est un studio solo fondé par Stéphane Desmets. Chaque app est conçue, développée et maintenue avec soin — sans équipe marketing, sans dark patterns, sans abonnements inutiles.",
@@ -601,6 +619,13 @@
         g_f2:            "Time Sensitive alerts · Home screen widget",
         g_f3:            "HomeKit sensor · 3-night overview",
         givro_price:     "Free · Givró Pro €0.99",
+        killchain_tag:   "Tactics · 2–4 players",
+        killchain_name:  "KILL_CHAIN",
+        killchain_desc:  "Hacker tactics, terminal screen. Program in secret, execute simultaneously.",
+        kc_f1:           "6 classes · Pass-and-Play · ASYNC",
+        kc_f2:           "2–4 players · 1 phone",
+        kc_f3:           "Free + Kill Chain Pro €2.99",
+        killchain_price: "Free · Kill Chain Pro €2.99",
         cta:             "Discover",
         studio_title:    "Made with care,\nby one person.",
         studio_p1:       "yayayoo is a solo studio founded by Stéphane Desmets. Every app is designed, built, and maintained with care — no marketing team, no dark patterns, no pointless subscriptions.",
