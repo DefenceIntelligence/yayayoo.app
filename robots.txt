@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yayayoo.app/sitemap.xml

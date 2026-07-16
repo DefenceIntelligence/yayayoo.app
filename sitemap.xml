@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://yayayoo.app/</loc><priority>1.0</priority></url>
+
+  <url><loc>https://yayayoo.app/versusly/</loc><priority>0.8</priority></url>
+  <url><loc>https://yayayoo.app/versusly/privacy/</loc><priority>0.3</priority></url>
+  <url><loc>https://yayayoo.app/versusly/terms/</loc><priority>0.3</priority></url>
+
+  <url><loc>https://yayayoo.app/almostly/</loc><priority>0.8</priority></url>
+  <url><loc>https://yayayoo.app/almostly/privacy/</loc><priority>0.3</priority></url>
+  <url><loc>https://yayayoo.app/almostly/terms/</loc><priority>0.3</priority></url>
+
+  <url><loc>https://yayayoo.app/givro/</loc><priority>0.8</priority></url>
+  <url><loc>https://yayayoo.app/givro/privacy/</loc><priority>0.3</priority></url>
+  <url><loc>https://yayayoo.app/givro/terms/</loc><priority>0.3</priority></url>
+
+  <url><loc>https://yayayoo.app/kill-chain/</loc><priority>0.8</priority></url>
+  <url><loc>https://yayayoo.app/kill-chain/privacy/</loc><priority>0.3</priority></url>
+  <url><loc>https://yayayoo.app/kill-chain/terms/</loc><priority>0.3</priority></url>
+</urlset>
