@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>yayayoo — Des apps qui font sourire</title>
-  <meta name="description" content="yayayoo est un studio indépendant qui crée des apps iPhone simples, soignées et amusantes. Découvrez Versusly, Almostly et Givró." />
+  <meta name="description" content="yayayoo est un studio indépendant qui crée des apps iPhone simples, soignées et amusantes. Découvrez Versusly, Almostly, Givró et Kill Chain." />
   <link rel="canonical" href="https://yayayoo.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="yayayoo" />
@@ -12,11 +12,14 @@
   <meta property="og:url" content="https://yayayoo.app/" />
   <meta property="og:title" content="yayayoo — Des apps qui font sourire" />
   <meta property="og:description" content="Studio indépendant d'apps iPhone simples, soignées et amusantes : Versusly, Almostly, Givró et Kill Chain." />
-  <!-- TODO: créer une image de partage 1200×630 puis ajouter: <meta property="og:image" content="https://yayayoo.app/og-cover.png" /> + passer twitter:card à summary_large_image -->
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://yayayoo.app/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@YayayooApp" />
   <meta name="twitter:title" content="yayayoo — Des apps qui font sourire" />
   <meta name="twitter:description" content="Studio indépendant d'apps iPhone simples, soignées et amusantes : Versusly, Almostly, Givró et Kill Chain." />
+  <meta name="twitter:image" content="https://yayayoo.app/og.png" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='14' fill='%231C1C1E'/><circle cx='17' cy='20' r='4' fill='%23FF6B6B'/><circle cx='18.2' cy='21.2' r='1.8' fill='white'/><circle cx='31' cy='20' r='4' fill='%234D96FF'/><circle cx='32.2' cy='21.2' r='1.8' fill='white'/><path d='M15 29 Q24 37 33 29' stroke='%23FFD93D' stroke-width='2.5' stroke-linecap='round' fill='none'/></svg>" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -285,8 +288,11 @@
     .footer-links { display: flex; gap: 16px; }
     .footer-links a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
     .footer-links a:hover { color: var(--text); }
+    .footer-contact { display: flex; flex-direction: column; gap: 8px; }
     .footer-contact a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
     .footer-contact a:hover { color: var(--text); }
+    .footer-x { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+    .footer-x svg { flex-shrink: 0; }
     .footer-copy { font-size: .78rem; color: var(--muted); opacity: .55; width: 100%; text-align: center; margin-top: 8px; }
 
     @media (max-width: 680px) {
@@ -547,6 +553,10 @@
       </div>
 
       <div class="footer-contact">
+        <a class="footer-x" href="https://x.com/YayayooApp" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <span data-i18n="f_follow">Suivez-nous sur X</span>
+        </a>
         <a href="mailto:yayayoo.app@gmail.com">yayayoo.app@gmail.com</a>
       </div>
 
@@ -605,6 +615,7 @@
         f_privacy:       "Confidentialité",
         f_terms:         "Conditions",
         f_rights:        "Tous droits réservés.",
+        f_follow:        "Suivez-nous sur X",
       },
       en: {
         eyebrow:         "Independent studio · iPhone apps",
@@ -645,6 +656,7 @@
         f_privacy:       "Privacy",
         f_terms:         "Terms",
         f_rights:        "All rights reserved.",
+        f_follow:        "Follow us on X",
       }
     };
 
