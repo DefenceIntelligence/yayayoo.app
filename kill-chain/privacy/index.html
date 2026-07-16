@@ -2,21 +2,23 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <!-- Google Tag Manager (chargé après consentement — RGPD/CNIL) -->
+  <!-- Google Analytics 4 (chargé après consentement — RGPD/CNIL) -->
   <script>
   (function(){
-    var GTM='GTM-5M8GQ286', KEY='yayayoo_consent';
-    function loadGTM(){
-      if(window._gtmLoaded)return; window._gtmLoaded=true;
+    var GA='G-TZ3LVQ579M', KEY='yayayoo_consent';
+    function loadGA(){
+      if(window._gaLoaded)return; window._gaLoaded=true;
+      var s=document.createElement('script');
+      s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id='+GA;
+      document.head.appendChild(s);
       window.dataLayer=window.dataLayer||[];
-      window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-      var f=document.getElementsByTagName('script')[0],j=document.createElement('script');
-      j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+GTM;
-      f.parentNode.insertBefore(j,f);
+      function gtag(){dataLayer.push(arguments);} window.gtag=gtag;
+      gtag('js', new Date());
+      gtag('config', GA);
     }
     function set(v){try{localStorage.setItem(KEY,v)}catch(e){}}
     var c=null; try{c=localStorage.getItem(KEY)}catch(e){}
-    if(c==='granted'){loadGTM();return;}
+    if(c==='granted'){loadGA();return;}
     if(c==='denied'){return;}
     function banner(){
       var lang=('fr'); try{lang=(localStorage.getItem('yayayoo_lang')||document.documentElement.lang||'fr').slice(0,2)}catch(e){}
@@ -31,14 +33,14 @@
       var no=el.querySelector('#yy-c-no');no.textContent=T.no;
       var yes=el.querySelector('#yy-c-yes');yes.textContent=T.yes;
       document.body.appendChild(el);
-      yes.onclick=function(){set('granted');loadGTM();el.remove();};
+      yes.onclick=function(){set('granted');loadGA();el.remove();};
       no.onclick=function(){set('denied');el.remove();};
     }
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',banner);
     else banner();
   })();
   </script>
-  <!-- End Google Tag Manager -->
+  <!-- End Google Analytics 4 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Politique de confidentialité — Kill Chain</title>
   <link rel="canonical" href="https://yayayoo.app/kill-chain/privacy/" />
