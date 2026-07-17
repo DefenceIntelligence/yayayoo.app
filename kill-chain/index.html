@@ -386,6 +386,7 @@
         <span data-i18n="cta_appstore">App Store — Bientôt</span>
       </a>
       <a href="#classes" class="btn-secondary" data-i18n="cta_learn">Voir les classes ↓</a>
+      <a href="#" class="btn-secondary" data-i18n="cta_share" onclick="if(navigator.share){navigator.share({title:document.title,url:location.href}).catch(function(){})}else{navigator.clipboard.writeText(location.href);this.textContent='✓ Copié'}return false">Partager ↗</a>
     </div>
   </section>
 
@@ -557,7 +558,7 @@
       fr: {
         nav_cta:"Bientôt", badge:"App Store — Bientôt disponible",
         hero_desc:"2-4 joueurs · 1 téléphone · Programmez vos attaques en secret. Exécutez simultanément. Analysez les logs.",
-        cta_appstore:"App Store — Bientôt", cta_learn:"Voir les classes ↓",
+        cta_appstore:"App Store — Bientôt", cta_learn:"Voir les classes ↓", cta_share:"Partager ↗",
         classes_tag:"// classes", classes_title:"6 hackers. 6 façons de jouer.",
         c1_desc:"Chaos pur. Une action par tour remplacée aléatoirement. Redoutable… ou suicidaire.",
         c2_desc:"ATTACK +50% de dégâts. Silencieux. Patient. Précis. Se résout en dernier dans sa catégorie.",
@@ -585,7 +586,7 @@
       en: {
         nav_cta:"Soon", badge:"App Store — Coming soon",
         hero_desc:"2-4 players · 1 phone · Program your attacks in secret. Execute simultaneously. Read the logs.",
-        cta_appstore:"App Store — Coming soon", cta_learn:"See the classes ↓",
+        cta_appstore:"App Store — Coming soon", cta_learn:"See the classes ↓", cta_share:"Share ↗",
         classes_tag:"// classes", classes_title:"6 hackers. 6 ways to play.",
         c1_desc:"Pure chaos. One action per turn replaced randomly. Deadly… or self-destructive.",
         c2_desc:"ATTACK +50% damage. Silent. Patient. Precise. Resolves last in its category.",

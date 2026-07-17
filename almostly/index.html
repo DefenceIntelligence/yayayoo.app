@@ -254,6 +254,7 @@
         <span data-i18n="hero.cta">App Store</span>
       </a>
       <a class="btn-secondary" href="#features" data-i18n="hero.more">En savoir plus</a>
+      <a href="#" class="btn-secondary" data-i18n="hero.share" onclick="if(navigator.share){navigator.share({title:document.title,url:location.href}).catch(function(){})}else{navigator.clipboard.writeText(location.href);this.textContent='✓ Copié'}return false">Partager ↗</a>
     </div>
   </section>
 
@@ -361,7 +362,7 @@
         'nav.download':'Télécharger','hero.badge':'✦ Disponible sur l\'App Store',
         'hero.title':'Tes dates,<br><span class="gradient">avec personnalité.</span>',
         'hero.sub':'Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.',
-        'hero.cta':'App Store','hero.more':'En savoir plus',
+        'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗',
         'features.tag':'Fonctionnalités','features.title':'Tout ce qu\'il faut pour<br>ne jamais oublier.','features.sub':'Des événements qui comptent — dans tous les sens du terme.',
         'f1.title':'Compte à rebours & écoulé','f1.body':'Compte les jours qui restent avant un événement, ou ceux qui se sont écoulés depuis. Anniversaire, projet, défi — tout y passe.',
         'f2.title':'12 thèmes de couleur','f2.body':'Océan, Coucher de soleil, Forêt, Flamme, Aurore, Or… chaque événement a sa propre ambiance visuelle.',
@@ -385,7 +386,7 @@
         'nav.download':'Download','hero.badge':'✦ Available on the App Store',
         'hero.title':'Your dates,<br><span class="gradient">with personality.</span>',
         'hero.sub':'Almostly counts your days in style — and Pip, your mascot, comments on every milestone with humor, warmth, or zen vibes.',
-        'hero.cta':'App Store','hero.more':'Learn more',
+        'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗',
         'features.tag':'Features','features.title':'Everything you need<br>to never forget.','features.sub':'Events that matter — in every sense of the word.',
         'f1.title':'Countdown & elapsed','f1.body':'Count the days remaining before an event, or those that have passed since. Birthday, project, challenge — everything counts.',
         'f2.title':'12 color themes','f2.body':'Ocean, Sunset, Forest, Flame, Aurora, Gold… each event has its own visual vibe.',

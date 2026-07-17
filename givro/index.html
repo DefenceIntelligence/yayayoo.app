@@ -228,6 +228,7 @@
         <span data-i18n="hero.cta">App Store</span>
       </a>
       <a class="btn-secondary" href="#screenshots" data-i18n="hero.more">En savoir plus</a>
+      <a href="#" class="btn-secondary" data-i18n="hero.share" onclick="if(navigator.share){navigator.share({title:document.title,url:location.href}).catch(function(){})}else{navigator.clipboard.writeText(location.href);this.textContent='✓ Copié'}return false">Partager ↗</a>
     </div>
   </section>
 
@@ -239,27 +240,27 @@
     </div>
     <div class="screenshots-row">
       <div class="screen-slot">
-        <img src="screenshots/sc-home.png" alt="Givró — écran principal nuit chaude" loading="lazy" />
+        <img src="screenshots/sc-home.webp" alt="Givró — écran principal nuit chaude" loading="lazy" />
         <div class="screen-label" data-i18n="sc1.label">Ce soir, trop chaud</div>
         <div class="screen-caption" data-i18n="sc1.cap">L'app te montre le moins pire</div>
       </div>
       <div class="screen-slot featured">
-        <img src="screenshots/sc-ouvre.png" alt="Givró — ouvre à 23h00" loading="lazy" />
+        <img src="screenshots/sc-ouvre.webp" alt="Givró — ouvre à 23h00" loading="lazy" />
         <div class="screen-label" data-i18n="sc2.label">Ouvre à 23h00</div>
         <div class="screen-caption" data-i18n="sc2.cap">L'heure exacte, calculée pour toi</div>
       </div>
       <div class="screen-slot">
-        <img src="screenshots/sc-pro.png" alt="Givró Pro" loading="lazy" />
+        <img src="screenshots/sc-pro.webp" alt="Givró Pro" loading="lazy" />
         <div class="screen-label" data-i18n="sc3.label">Givró Pro</div>
         <div class="screen-caption" data-i18n="sc3.cap">Achat unique, sans abonnement</div>
       </div>
       <div class="screen-slot">
-        <img src="screenshots/sc-settings.png" alt="Givró — réglages HomeKit" loading="lazy" />
+        <img src="screenshots/sc-settings.webp" alt="Givró — réglages HomeKit" loading="lazy" />
         <div class="screen-label" data-i18n="sc4.label">Réglages HomeKit</div>
         <div class="screen-caption" data-i18n="sc4.cap">Capteur intérieur en temps réel</div>
       </div>
       <div class="screen-slot">
-        <img src="screenshots/sc-widget.png" alt="Givró — widget écran d'accueil" loading="lazy" />
+        <img src="screenshots/sc-widget.webp" alt="Givró — widget écran d'accueil" loading="lazy" />
         <div class="screen-label" data-i18n="sc5.label">Widget écran d'accueil</div>
         <div class="screen-caption" data-i18n="sc5.cap">Petit ou moyen, toujours à portée</div>
       </div>
@@ -357,7 +358,7 @@
         'nav.download':'Télécharger','hero.badge':'❄️ Disponible sur l\'App Store',
         'hero.title':'Rafraîchis ta nuit,<br><span class="gradient">naturellement.</span>',
         'hero.sub':'Givró analyse la météo de la nuit et te dit exactement quand ouvrir tes fenêtres pour rafraîchir ton logement — sans clim, juste avec l\'air du dehors.',
-        'hero.cta':'App Store','hero.more':'En savoir plus',
+        'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗',
         'screens.tag':'Aperçu','screens.title':'L\'app en images','screens.sub':'Conçue pour les nuits de canicule. Simple, précise, sans clim.',
         'sc1.label':'Ce soir, trop chaud','sc1.cap':'L\'app te montre le moins pire',
         'sc2.label':'Ouvre à 23h00','sc2.cap':'L\'heure exacte, calculée pour toi',
@@ -391,7 +392,7 @@
         'nav.download':'Download','hero.badge':'❄️ Available on the App Store',
         'hero.title':'Cool your night,<br><span class="gradient">naturally.</span>',
         'hero.sub':'Givró analyzes the night weather and tells you exactly when to open your windows to cool your home — no AC, just fresh outdoor air.',
-        'hero.cta':'App Store','hero.more':'Learn more',
+        'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗',
         'screens.tag':'Preview','screens.title':'The app in pictures','screens.sub':'Built for heat wave nights. Simple, accurate, no AC.',
         'sc1.label':'Tonight, too hot','sc1.cap':'Shows you the best option anyway',
         'sc2.label':'Open at 11pm','sc2.cap':'The exact time, calculated for you',

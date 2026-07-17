@@ -264,6 +264,9 @@
       text-decoration: none; transition: opacity .2s;
     }
     .app-cta:hover { opacity: .8; }
+    .app-cta-group { display: flex; align-items: center; gap: 14px; }
+    .app-detail-link { font-size: .85rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .app-detail-link:hover { color: var(--text); }
     .versusly .app-cta { background: rgba(255,59,48,.15); color: var(--red); border: 1px solid rgba(255,59,48,.25); }
     .almostly .app-cta { background: rgba(255,107,53,.15); color: var(--orange); border: 1px solid rgba(255,107,53,.25); }
     .app-card.killchain { border-color: rgba(51,255,102,.18); }
@@ -314,6 +317,13 @@
     }
     .studio-section p {
       font-size: .95rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px;
+    }
+    .studio-reassure {
+      display: inline-block; margin-top: 20px;
+      font-size: .8rem; font-weight: 700; letter-spacing: .5px;
+      color: var(--green);
+      background: rgba(48,209,88,.08); border: 1px solid rgba(48,209,88,.22);
+      padding: 8px 18px; border-radius: 50px;
     }
 
     /* ── FOOTER ── */
@@ -464,7 +474,7 @@
     <div class="apps-grid">
 
       <!-- Versusly -->
-      <a href="/versusly" class="app-card versusly">
+      <div class="app-card versusly">
         <div class="app-header">
           <div class="app-icon">⚔️</div>
           <div>
@@ -480,15 +490,15 @@
         </div>
         <div class="app-footer-row">
           <span class="app-price" data-i18n="versusly_price">Gratuit · Versusly Pro 1,99 €</span>
-          <a href="/versusly" class="app-cta">
-            <span data-i18n="cta">Découvrir</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="app-cta-group">
+            <a href="/versusly" class="app-detail-link" data-i18n="details">Détails</a>
+            <a href="https://apps.apple.com/fr/app/versusly/id6780861699" class="app-cta" target="_blank" rel="noopener"><span>App Store</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
         </div>
-      </a>
+      </div>
 
       <!-- Almostly -->
-      <a href="/almostly" class="app-card almostly">
+      <div class="app-card almostly">
         <div class="app-header">
           <div class="app-icon">⏳</div>
           <div>
@@ -504,16 +514,16 @@
         </div>
         <div class="app-footer-row">
           <span class="app-price" data-i18n="almostly_price">Gratuit · Almostly Plus 2,99 €</span>
-          <a href="/almostly" class="app-cta">
-            <span data-i18n="cta">Découvrir</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="app-cta-group">
+            <a href="/almostly" class="app-detail-link" data-i18n="details">Détails</a>
+            <a href="https://apps.apple.com/app/almostly/id6779545689" class="app-cta" target="_blank" rel="noopener"><span>App Store</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
         </div>
-      </a>
+      </div>
 
 
       <!-- Givró -->
-      <a href="/givro" class="app-card givro">
+      <div class="app-card givro">
         <div class="app-header">
           <div class="app-icon">❄️</div>
           <div>
@@ -529,14 +539,14 @@
         </div>
         <div class="app-footer-row">
           <span class="app-price" data-i18n="givro_price">Gratuit · Givró Pro 0,99 €</span>
-          <a href="/givro" class="app-cta">
-            <span data-i18n="cta">Découvrir</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <div class="app-cta-group">
+            <a href="/givro" class="app-detail-link" data-i18n="details">Détails</a>
+            <a href="https://apps.apple.com/fr/app/givr%C3%B3/id6789108463" class="app-cta" target="_blank" rel="noopener"><span>App Store</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
         </div>
-      </a>
+      </div>
 
-      <a href="/kill-chain" class="app-card killchain">
+      <div class="app-card killchain">
         <div class="app-header">
           <div class="app-icon">⛓️</div>
           <div>
@@ -552,22 +562,20 @@
         </div>
         <div class="app-footer-row">
           <span class="app-price" data-i18n="killchain_price">Gratuit · Kill Chain Pro 2,99 €</span>
-          <a href="/kill-chain" class="app-cta">
-            <span data-i18n="cta">Découvrir</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          <a href="/kill-chain" class="app-detail-link" data-i18n="details">Détails</a>
         </div>
-      </a>
+      </div>
 
     </div>
   </section>
 
   <!-- STUDIO -->
   <section class="studio-section">
-    <div class="studio-icon">🛠️</div>
-    <h2 data-i18n="studio_title">Fait avec soin,<br>par une seule personne.</h2>
-    <p data-i18n="studio_p1">yayayoo est un studio solo fondé par Stéphane Desmets. Chaque app est conçue, développée et maintenue avec soin — sans équipe marketing, sans dark patterns, sans abonnements inutiles.</p>
-    <p data-i18n="studio_p2">Si une app te fait sourire ou passer un bon moment, c'est gagné.</p>
+    <div class="studio-icon">💛</div>
+    <h2 data-i18n="studio_title">Fait par un papa,<br>pour ses enfants (et les vôtres).</h2>
+    <p data-i18n="studio_p1">yayayoo, c'est une seule personne : Stéphane, développeur et papa d'Arwen et Noah. Chaque app naît d'un moment de vie — un jeu pour rire à deux, un compte à rebours pour attendre les vacances.</p>
+    <p data-i18n="studio_p2">Pas d'équipe marketing, pas de pub, pas de collecte de données. Juste des apps soignées, que je serais fier de mettre entre les mains de mes propres enfants.</p>
+    <p class="studio-reassure" data-i18n="studio_reassure">Sans pub · Sans abonnement · Sans collecte de données</p>
   </section>
 
   <!-- FOOTER -->
@@ -673,9 +681,11 @@
         kc_f3:           "Gratuit + Kill Chain Pro 2,99 €",
         killchain_price: "Gratuit · Kill Chain Pro 2,99 €",
         cta:             "Découvrir",
-        studio_title:    "Fait avec soin,\npar une seule personne.",
-        studio_p1:       "yayayoo est un studio solo fondé par Stéphane Desmets. Chaque app est conçue, développée et maintenue avec soin — sans équipe marketing, sans dark patterns, sans abonnements inutiles.",
-        studio_p2:       "Si une app te fait sourire ou passer un bon moment, c'est gagné.",
+        details:         "Détails",
+        studio_title:    "Fait par un papa,\npour ses enfants (et les vôtres).",
+        studio_p1:       "yayayoo, c'est une seule personne : Stéphane, développeur et papa d'Arwen et Noah. Chaque app naît d'un moment de vie — un jeu pour rire à deux, un compte à rebours pour attendre les vacances.",
+        studio_p2:       "Pas d'équipe marketing, pas de pub, pas de collecte de données. Juste des apps soignées, que je serais fier de mettre entre les mains de mes propres enfants.",
+        studio_reassure: "Sans pub · Sans abonnement · Sans collecte de données",
         f_privacy:       "Confidentialité",
         f_terms:         "Conditions",
         f_rights:        "Tous droits réservés.",
@@ -714,9 +724,11 @@
         kc_f3:           "Free + Kill Chain Pro €2.99",
         killchain_price: "Free · Kill Chain Pro €2.99",
         cta:             "Discover",
-        studio_title:    "Made with care,\nby one person.",
-        studio_p1:       "yayayoo is a solo studio founded by Stéphane Desmets. Every app is designed, built, and maintained with care — no marketing team, no dark patterns, no pointless subscriptions.",
-        studio_p2:       "If an app makes you smile or gives you a good time, that's a win.",
+        details:         "Details",
+        studio_title:    "Made by a dad,\nfor his kids (and yours).",
+        studio_p1:       "yayayoo is one person: Stéphane, a developer and dad to Arwen and Noah. Every app is born from a moment of life — a game to laugh together, a countdown to look forward to the holidays.",
+        studio_p2:       "No marketing team, no ads, no data collection. Just carefully crafted apps I'd be proud to put in my own kids' hands.",
+        studio_reassure: "No ads · No subscription · No data collection",
         f_privacy:       "Privacy",
         f_terms:         "Terms",
         f_rights:        "All rights reserved.",
