@@ -168,6 +168,16 @@
       font-size: 1rem; font-weight: 600; text-decoration: none; transition: background .2s;
     }
     .btn-secondary:hover { background: rgba(0,0,0,.1); }
+    .app-screens { padding: 80px 24px 90px; background: var(--dark); }
+    .app-screens .section-header h2 { color: #fff; }
+    .app-screens .section-header p { color: rgba(255,255,255,.55); }
+    .screens-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; align-items: flex-end; }
+    .screen-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .screen-item img { width: 160px; border-radius: 28px; box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); display: block; transition: transform .25s; }
+    .screen-item:hover img { transform: translateY(-6px); }
+    .screen-item.featured img { width: 190px; }
+    .screen-cap { font-size: .8rem; color: rgba(255,255,255,.6); text-align: center; max-width: 170px; }
+    @media (max-width: 600px) { .screen-item img { width: 120px; } .screen-item.featured img { width: 140px; } }
 
     .section-header { text-align: center; margin-bottom: 56px; }
     .section-tag {
@@ -255,6 +265,36 @@
       </a>
       <a class="btn-secondary" href="#features" data-i18n="hero.more">En savoir plus</a>
       <a href="#" class="btn-secondary" data-i18n="hero.share" onclick="if(navigator.share){navigator.share({title:document.title,url:location.href}).catch(function(){})}else{navigator.clipboard.writeText(location.href);this.textContent='✓ Copié'}return false">Partager ↗</a>
+    </div>
+  </section>
+
+  <section class="app-screens">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="screens.tag">Aperçu</span>
+      <h2 data-i18n="screens.title">L'app en images</h2>
+      <p data-i18n="screens.sub">Des comptes à rebours colorés, commentés par Pip.</p>
+    </div>
+    <div class="screens-row">
+      <div class="screen-item featured">
+        <img src="screenshots/screen-list.webp" alt="Almostly — liste de comptes à rebours colorés avec la mascotte Pip" loading="lazy">
+        <span class="screen-cap" data-i18n="screens.c1">Tous tes événements, en couleurs</span>
+      </div>
+      <div class="screen-item">
+        <img src="screenshots/screen-detail.webp" alt="Almostly — vue détaillée J-1 avec un commentaire de Pip" loading="lazy">
+        <span class="screen-cap" data-i18n="screens.c2">Pip commente chaque étape</span>
+      </div>
+      <div class="screen-item">
+        <img src="screenshots/screen-editor.webp" alt="Almostly — éditeur d'événement : emoji, date, thème" loading="lazy">
+        <span class="screen-cap" data-i18n="screens.c3">Personnalise en quelques taps</span>
+      </div>
+      <div class="screen-item">
+        <img src="screenshots/screen-widget.webp" alt="Almostly — widget compte à rebours sur l'écran d'accueil iPhone" loading="lazy">
+        <span class="screen-cap" data-i18n="screens.c4">Widget sur l'écran d'accueil</span>
+      </div>
+      <div class="screen-item">
+        <img src="screenshots/screen-settings.webp" alt="Almostly Plus — achat unique, sans abonnement" loading="lazy">
+        <span class="screen-cap" data-i18n="screens.c5">Almostly Plus, achat unique</span>
+      </div>
     </div>
   </section>
 
@@ -363,6 +403,7 @@
         'hero.title':'Tes dates,<br><span class="gradient">avec personnalité.</span>',
         'hero.sub':'Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.',
         'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗',
+        'screens.tag':'Aperçu','screens.title':'L\'app en images','screens.sub':'Des comptes à rebours colorés, commentés par Pip.','screens.c1':'Tous tes événements, en couleurs','screens.c2':'Pip commente chaque étape','screens.c3':'Personnalise en quelques taps','screens.c4':'Widget sur l\'écran d\'accueil','screens.c5':'Almostly Plus, achat unique',
         'features.tag':'Fonctionnalités','features.title':'Tout ce qu\'il faut pour<br>ne jamais oublier.','features.sub':'Des événements qui comptent — dans tous les sens du terme.',
         'f1.title':'Compte à rebours & écoulé','f1.body':'Compte les jours qui restent avant un événement, ou ceux qui se sont écoulés depuis. Anniversaire, projet, défi — tout y passe.',
         'f2.title':'12 thèmes de couleur','f2.body':'Océan, Coucher de soleil, Forêt, Flamme, Aurore, Or… chaque événement a sa propre ambiance visuelle.',
@@ -387,6 +428,7 @@
         'hero.title':'Your dates,<br><span class="gradient">with personality.</span>',
         'hero.sub':'Almostly counts your days in style — and Pip, your mascot, comments on every milestone with humor, warmth, or zen vibes.',
         'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗',
+        'screens.tag':'Preview','screens.title':'The app in pictures','screens.sub':'Colorful countdowns, with a word from Pip.','screens.c1':'All your events, in color','screens.c2':'Pip comments on every milestone','screens.c3':'Customize in a few taps','screens.c4':'Home screen widget','screens.c5':'Almostly Plus, one-time purchase',
         'features.tag':'Features','features.title':'Everything you need<br>to never forget.','features.sub':'Events that matter — in every sense of the word.',
         'f1.title':'Countdown & elapsed','f1.body':'Count the days remaining before an event, or those that have passed since. Birthday, project, challenge — everything counts.',
         'f2.title':'12 color themes','f2.body':'Ocean, Sunset, Forest, Flame, Aurora, Gold… each event has its own visual vibe.',
