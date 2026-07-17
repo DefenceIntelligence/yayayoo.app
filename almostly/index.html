@@ -223,6 +223,14 @@
     .footer-copy { font-size: .78rem; }
 
     @media (max-width: 600px) { nav { padding: 0 20px; } }
+    .faq { max-width: 720px; margin: 0 auto; padding: 80px 24px; }
+    .faq h2 { text-align: center; font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 32px; }
+    .faq details { border: 1px solid rgba(128,128,128,.25); border-radius: 14px; padding: 0 20px; margin-bottom: 12px; }
+    .faq summary { cursor: pointer; padding: 18px 0; font-weight: 700; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 1.3rem; opacity: .5; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq details p { padding: 0 0 18px; margin: 0; opacity: .72; line-height: 1.6; font-size: .95rem; }
   </style>
   <script type="application/ld+json">
   {
@@ -238,6 +246,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
     "publisher": { "@type": "Organization", "name": "yayayoo", "url": "https://yayayoo.app/" }
   }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Almostly a-t-il un widget écran d'accueil ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Almostly affiche ton prochain compte à rebours en widget sur l'écran d'accueil, et bascule sur le Dynamic Island le jour J."}}, {"@type": "Question", "name": "Peut-on compter les jours écoulés, pas seulement à venir ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Chaque événement peut compter les jours restants (J-12) ou écoulés (J+47) depuis une date."}}, {"@type": "Question", "name": "Almostly est-il gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, gratuit pour 2 événements et 3 thèmes. Almostly Plus (2,99 €, achat unique à vie, sans abonnement) débloque tout."}}]}
   </script>
 </head>
 <body>
@@ -384,6 +395,12 @@
       </div>
     </div>
   </section>
+  <section class="faq">
+    <h2 data-i18n="faq.title">Questions fréquentes</h2>
+    <details><summary data-i18n="faq.q1">Almostly a-t-il un widget écran d'accueil ?</summary><p data-i18n="faq.a1">Oui. Almostly affiche ton prochain compte à rebours en widget sur l'écran d'accueil, et bascule sur le Dynamic Island le jour J.</p></details>
+    <details><summary data-i18n="faq.q2">Peut-on compter les jours écoulés, pas seulement à venir ?</summary><p data-i18n="faq.a2">Oui. Chaque événement peut compter les jours restants (J-12) ou écoulés (J+47) depuis une date.</p></details>
+    <details><summary data-i18n="faq.q3">Almostly est-il gratuit ?</summary><p data-i18n="faq.a3">Oui, gratuit pour 2 événements et 3 thèmes. Almostly Plus (2,99 €, achat unique à vie, sans abonnement) débloque tout.</p></details>
+  </section>
 
   <footer>
     <div class="footer-logo">Almostly</div>
@@ -402,7 +419,7 @@
         'nav.download':'Télécharger','hero.badge':'✦ Disponible sur l\'App Store',
         'hero.title':'Tes dates,<br><span class="gradient">avec personnalité.</span>',
         'hero.sub':'Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.',
-        'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗',
+        'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗','faq.title':'Questions fréquentes','faq.q1':'Almostly a-t-il un widget écran d\'accueil ?','faq.a1':'Oui. Almostly affiche ton prochain compte à rebours en widget sur l\'écran d\'accueil, et bascule sur le Dynamic Island le jour J.','faq.q2':'Peut-on compter les jours écoulés, pas seulement à venir ?','faq.a2':'Oui. Chaque événement peut compter les jours restants (J-12) ou écoulés (J+47) depuis une date.','faq.q3':'Almostly est-il gratuit ?','faq.a3':'Oui, gratuit pour 2 événements et 3 thèmes. Almostly Plus (2,99 €, achat unique à vie, sans abonnement) débloque tout.',
         'screens.tag':'Aperçu','screens.title':'L\'app en images','screens.sub':'Des comptes à rebours colorés, commentés par Pip.','screens.c1':'Tous tes événements, en couleurs','screens.c2':'Pip commente chaque étape','screens.c3':'Personnalise en quelques taps','screens.c4':'Widget sur l\'écran d\'accueil','screens.c5':'Almostly Plus, achat unique',
         'features.tag':'Fonctionnalités','features.title':'Tout ce qu\'il faut pour<br>ne jamais oublier.','features.sub':'Des événements qui comptent — dans tous les sens du terme.',
         'f1.title':'Compte à rebours & écoulé','f1.body':'Compte les jours qui restent avant un événement, ou ceux qui se sont écoulés depuis. Anniversaire, projet, défi — tout y passe.',
@@ -427,7 +444,7 @@
         'nav.download':'Download','hero.badge':'✦ Available on the App Store',
         'hero.title':'Your dates,<br><span class="gradient">with personality.</span>',
         'hero.sub':'Almostly counts your days in style — and Pip, your mascot, comments on every milestone with humor, warmth, or zen vibes.',
-        'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗',
+        'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗','faq.title':'Frequently asked questions','faq.q1':'Does Almostly have a home screen widget?','faq.a1':'Yes. Almostly shows your next countdown as a home screen widget, and moves to the Dynamic Island on the big day.','faq.q2':'Can it count elapsed days, not just upcoming ones?','faq.a2':'Yes. Each event can count the days remaining (D-12) or elapsed (D+47) since a date.','faq.q3':'Is Almostly free?','faq.a3':'Yes, free for 2 events and 3 themes. Almostly Plus (€2.99, one-time lifetime purchase, no subscription) unlocks everything.',
         'screens.tag':'Preview','screens.title':'The app in pictures','screens.sub':'Colorful countdowns, with a word from Pip.','screens.c1':'All your events, in color','screens.c2':'Pip comments on every milestone','screens.c3':'Customize in a few taps','screens.c4':'Home screen widget','screens.c5':'Almostly Plus, one-time purchase',
         'features.tag':'Features','features.title':'Everything you need<br>to never forget.','features.sub':'Events that matter — in every sense of the word.',
         'f1.title':'Countdown & elapsed','f1.body':'Count the days remaining before an event, or those that have passed since. Birthday, project, challenge — everything counts.',

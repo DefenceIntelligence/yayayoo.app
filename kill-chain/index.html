@@ -347,6 +347,14 @@
       nav { padding: 14px 20px; }
       footer { flex-direction: column; align-items: flex-start; }
     }
+    .faq { max-width: 720px; margin: 0 auto; padding: 80px 24px; }
+    .faq h2 { text-align: center; font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 32px; }
+    .faq details { border: 1px solid rgba(128,128,128,.25); border-radius: 14px; padding: 0 20px; margin-bottom: 12px; }
+    .faq summary { cursor: pointer; padding: 18px 0; font-weight: 700; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 1.3rem; opacity: .5; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq details p { padding: 0 0 18px; margin: 0; opacity: .72; line-height: 1.6; font-size: .95rem; }
   </style>
   <script type="application/ld+json">
   {
@@ -361,6 +369,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
     "publisher": { "@type": "Organization", "name": "yayayoo", "url": "https://yayayoo.app/" }
   }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien de joueurs pour Kill Chain ?", "acceptedAnswer": {"@type": "Answer", "text": "De 2 à 4 joueurs sur un seul téléphone, en pass-and-play : chacun programme son tour en secret, puis tout s'exécute simultanément."}}, {"@type": "Question", "name": "Faut-il une connexion internet ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Kill Chain se joue en local, hors-ligne, autour d'un seul iPhone."}}, {"@type": "Question", "name": "Kill Chain est-il gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, gratuit. Kill Chain Pro (2,99 €) débloque toutes les classes."}}]}
   </script>
 </head>
 <body>
@@ -541,6 +552,12 @@
       </div>
     </div>
   </section>
+  <section class="faq">
+    <h2 data-i18n="faq_title">Questions fréquentes</h2>
+    <details><summary data-i18n="faq_q1">Combien de joueurs pour Kill Chain ?</summary><p data-i18n="faq_a1">De 2 à 4 joueurs sur un seul téléphone, en pass-and-play : chacun programme son tour en secret, puis tout s'exécute simultanément.</p></details>
+    <details><summary data-i18n="faq_q2">Faut-il une connexion internet ?</summary><p data-i18n="faq_a2">Non. Kill Chain se joue en local, hors-ligne, autour d'un seul iPhone.</p></details>
+    <details><summary data-i18n="faq_q3">Kill Chain est-il gratuit ?</summary><p data-i18n="faq_a3">Oui, gratuit. Kill Chain Pro (2,99 €) débloque toutes les classes.</p></details>
+  </section>
 
   <footer>
     <div class="footer-logo">KILL_CHAIN</div>
@@ -558,7 +575,7 @@
       fr: {
         nav_cta:"Bientôt", badge:"App Store — Bientôt disponible",
         hero_desc:"2-4 joueurs · 1 téléphone · Programmez vos attaques en secret. Exécutez simultanément. Analysez les logs.",
-        cta_appstore:"App Store — Bientôt", cta_learn:"Voir les classes ↓", cta_share:"Partager ↗",
+        cta_appstore:"App Store — Bientôt", cta_learn:"Voir les classes ↓", cta_share:"Partager ↗",faq_title:"Questions fréquentes",faq_q1:"Combien de joueurs pour Kill Chain ?",faq_a1:"De 2 à 4 joueurs sur un seul téléphone, en pass-and-play : chacun programme son tour en secret, puis tout s'exécute simultanément.",faq_q2:"Faut-il une connexion internet ?",faq_a2:"Non. Kill Chain se joue en local, hors-ligne, autour d'un seul iPhone.",faq_q3:"Kill Chain est-il gratuit ?",faq_a3:"Oui, gratuit. Kill Chain Pro (2,99 €) débloque toutes les classes.",
         classes_tag:"// classes", classes_title:"6 hackers. 6 façons de jouer.",
         c1_desc:"Chaos pur. Une action par tour remplacée aléatoirement. Redoutable… ou suicidaire.",
         c2_desc:"ATTACK +50% de dégâts. Silencieux. Patient. Précis. Se résout en dernier dans sa catégorie.",
@@ -586,7 +603,7 @@
       en: {
         nav_cta:"Soon", badge:"App Store — Coming soon",
         hero_desc:"2-4 players · 1 phone · Program your attacks in secret. Execute simultaneously. Read the logs.",
-        cta_appstore:"App Store — Coming soon", cta_learn:"See the classes ↓", cta_share:"Share ↗",
+        cta_appstore:"App Store — Coming soon", cta_learn:"See the classes ↓", cta_share:"Share ↗",faq_title:"Frequently asked questions",faq_q1:"How many players for Kill Chain?",faq_a1:"2 to 4 players on a single phone, pass-and-play: everyone programs their turn in secret, then everything runs simultaneously.",faq_q2:"Do you need an internet connection?",faq_a2:"No. Kill Chain is played locally, offline, around a single iPhone.",faq_q3:"Is Kill Chain free?",faq_a3:"Yes, free. Kill Chain Pro (€2.99) unlocks all classes.",
         classes_tag:"// classes", classes_title:"6 hackers. 6 ways to play.",
         c1_desc:"Pure chaos. One action per turn replaced randomly. Deadly… or self-destructive.",
         c2_desc:"ATTACK +50% damage. Silent. Patient. Precise. Resolves last in its category.",

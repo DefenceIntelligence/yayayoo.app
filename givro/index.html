@@ -187,6 +187,14 @@
       .screen-slot img { width: 110px; }
       .screen-slot.featured img { width: 134px; }
     }
+    .faq { max-width: 720px; margin: 0 auto; padding: 80px 24px; }
+    .faq h2 { text-align: center; font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 32px; }
+    .faq details { border: 1px solid rgba(128,128,128,.25); border-radius: 14px; padding: 0 20px; margin-bottom: 12px; }
+    .faq summary { cursor: pointer; padding: 18px 0; font-weight: 700; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 1.3rem; opacity: .5; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq details p { padding: 0 0 18px; margin: 0; opacity: .72; line-height: 1.6; font-size: .95rem; }
   </style>
   <script type="application/ld+json">
   {
@@ -202,6 +210,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
     "publisher": { "@type": "Organization", "name": "yayayoo", "url": "https://yayayoo.app/" }
   }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Comment Givró sait quand ouvrir les fenêtres ?", "acceptedAnswer": {"@type": "Answer", "text": "Givró analyse la météo heure par heure et calcule le créneau où l'air extérieur devient plus frais que l'intérieur — le bon moment pour ventiler sans clim."}}, {"@type": "Question", "name": "Givró fonctionne-t-il partout ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, partout où des prévisions Open-Meteo sont disponibles (couverture quasi mondiale), selon ta localisation."}}, {"@type": "Question", "name": "Givró est-il gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, gratuit. Givró Pro (0,99 €) ajoute le widget, les alertes Time Sensitive et le capteur HomeKit."}}]}
   </script>
 </head>
 <body>
@@ -340,6 +351,12 @@
       <div class="privacy-item"><span class="pi-icon">🚫</span><div class="pi-text"><strong data-i18n="pi4.title">Aucun tracking</strong><span data-i18n="pi4.body">Pas de publicité, pas de SDK analytics, pas de compte utilisateur.</span></div></div>
     </div>
   </section>
+  <section class="faq">
+    <h2 data-i18n="faq.title">Questions fréquentes</h2>
+    <details><summary data-i18n="faq.q1">Comment Givró sait quand ouvrir les fenêtres ?</summary><p data-i18n="faq.a1">Givró analyse la météo heure par heure et calcule le créneau où l'air extérieur devient plus frais que l'intérieur — le bon moment pour ventiler sans clim.</p></details>
+    <details><summary data-i18n="faq.q2">Givró fonctionne-t-il partout ?</summary><p data-i18n="faq.a2">Oui, partout où des prévisions Open-Meteo sont disponibles (couverture quasi mondiale), selon ta localisation.</p></details>
+    <details><summary data-i18n="faq.q3">Givró est-il gratuit ?</summary><p data-i18n="faq.a3">Oui, gratuit. Givró Pro (0,99 €) ajoute le widget, les alertes Time Sensitive et le capteur HomeKit.</p></details>
+  </section>
 
   <footer>
     <div class="footer-logo">Givró ❄️</div>
@@ -358,7 +375,7 @@
         'nav.download':'Télécharger','hero.badge':'❄️ Disponible sur l\'App Store',
         'hero.title':'Rafraîchis ta nuit,<br><span class="gradient">naturellement.</span>',
         'hero.sub':'Givró analyse la météo de la nuit et te dit exactement quand ouvrir tes fenêtres pour rafraîchir ton logement — sans clim, juste avec l\'air du dehors.',
-        'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗',
+        'hero.cta':'App Store','hero.more':'En savoir plus','hero.share':'Partager ↗','faq.title':'Questions fréquentes','faq.q1':'Comment Givró sait quand ouvrir les fenêtres ?','faq.a1':'Givró analyse la météo heure par heure et calcule le créneau où l\'air extérieur devient plus frais que l\'intérieur — le bon moment pour ventiler sans clim.','faq.q2':'Givró fonctionne-t-il partout ?','faq.a2':'Oui, partout où des prévisions Open-Meteo sont disponibles (couverture quasi mondiale), selon ta localisation.','faq.q3':'Givró est-il gratuit ?','faq.a3':'Oui, gratuit. Givró Pro (0,99 €) ajoute le widget, les alertes Time Sensitive et le capteur HomeKit.',
         'screens.tag':'Aperçu','screens.title':'L\'app en images','screens.sub':'Conçue pour les nuits de canicule. Simple, précise, sans clim.',
         'sc1.label':'Ce soir, trop chaud','sc1.cap':'L\'app te montre le moins pire',
         'sc2.label':'Ouvre à 23h00','sc2.cap':'L\'heure exacte, calculée pour toi',
@@ -392,7 +409,7 @@
         'nav.download':'Download','hero.badge':'❄️ Available on the App Store',
         'hero.title':'Cool your night,<br><span class="gradient">naturally.</span>',
         'hero.sub':'Givró analyzes the night weather and tells you exactly when to open your windows to cool your home — no AC, just fresh outdoor air.',
-        'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗',
+        'hero.cta':'App Store','hero.more':'Learn more','hero.share':'Share ↗','faq.title':'Frequently asked questions','faq.q1':'How does Givró know when to open the windows?','faq.a1':'Givró analyzes the weather hour by hour and finds the window when outside air is cooler than inside — the right time to ventilate without AC.','faq.q2':'Does Givró work everywhere?','faq.a2':'Yes, anywhere Open-Meteo forecasts are available (near-worldwide), based on your location.','faq.q3':'Is Givró free?','faq.a3':'Yes, free. Givró Pro (€0.99) adds the widget, Time Sensitive alerts and the HomeKit sensor.',
         'screens.tag':'Preview','screens.title':'The app in pictures','screens.sub':'Built for heat wave nights. Simple, accurate, no AC.',
         'sc1.label':'Tonight, too hot','sc1.cap':'Shows you the best option anyway',
         'sc2.label':'Open at 11pm','sc2.cap':'The exact time, calculated for you',

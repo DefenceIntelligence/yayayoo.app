@@ -263,6 +263,14 @@
       nav { padding: 14px 20px; }
       footer { flex-direction: column; align-items: flex-start; }
     }
+    .faq { max-width: 720px; margin: 0 auto; padding: 80px 24px; }
+    .faq h2 { text-align: center; font-size: clamp(1.6rem,3.5vw,2.4rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 32px; }
+    .faq details { border: 1px solid rgba(128,128,128,.25); border-radius: 14px; padding: 0 20px; margin-bottom: 12px; }
+    .faq summary { cursor: pointer; padding: 18px 0; font-weight: 700; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; font-size: 1.3rem; opacity: .5; }
+    .faq details[open] summary::after { content: '−'; }
+    .faq details p { padding: 0 0 18px; margin: 0; opacity: .72; line-height: 1.6; font-size: .95rem; }
   </style>
   <script type="application/ld+json">
   {
@@ -278,6 +286,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
     "publisher": { "@type": "Organization", "name": "yayayoo", "url": "https://yayayoo.app/" }
   }
+  </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Faut-il deux téléphones pour jouer ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Versusly est un jeu 2 joueurs sur un seul iPhone : l'écran se divise en deux, chaque joueur tient un côté. Pas de second appareil, pas de Bluetooth."}}, {"@type": "Question", "name": "Versusly fonctionne-t-il sans connexion internet ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, 100 % hors-ligne. Aucun wifi ni données mobiles requis — idéal en voiture, en soirée ou en voyage."}}, {"@type": "Question", "name": "Versusly est-il gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, gratuit avec 3 mini-jeux. Versusly Pro (1,99 €, achat unique, sans abonnement) débloque les 6 jeux."}}]}
   </script>
 </head>
 <body>
@@ -420,6 +431,12 @@
       </div>
     </div>
   </section>
+  <section class="faq">
+    <h2 data-i18n="faq_title">Questions fréquentes</h2>
+    <details><summary data-i18n="faq_q1">Faut-il deux téléphones pour jouer ?</summary><p data-i18n="faq_a1">Non. Versusly est un jeu 2 joueurs sur un seul iPhone : l'écran se divise en deux, chaque joueur tient un côté. Pas de second appareil, pas de Bluetooth.</p></details>
+    <details><summary data-i18n="faq_q2">Versusly fonctionne-t-il sans connexion internet ?</summary><p data-i18n="faq_a2">Oui, 100 % hors-ligne. Aucun wifi ni données mobiles requis — idéal en voiture, en soirée ou en voyage.</p></details>
+    <details><summary data-i18n="faq_q3">Versusly est-il gratuit ?</summary><p data-i18n="faq_a3">Oui, gratuit avec 3 mini-jeux. Versusly Pro (1,99 €, achat unique, sans abonnement) débloque les 6 jeux.</p></details>
+  </section>
 
   <footer>
     <div class="footer-logo"><span>Versus</span><em>ly</em></div>
@@ -438,7 +455,7 @@
         nav_cta:"Télécharger", badge:"Disponible sur l'App Store",
         hero_line1:"Le jeu qui met", hero_line2:"l'amitié à l'épreuve",
         hero_desc:"2 joueurs · 1 téléphone · Pas de pitié. Enchaînez les mini-jeux en split-screen et prouvez qui est le meilleur.",
-        cta_appstore:"App Store", cta_learn:"Voir les jeux ↓", cta_share:"Partager ↗",
+        cta_appstore:"App Store", cta_learn:"Voir les jeux ↓", cta_share:"Partager ↗",faq_title:"Questions fréquentes",faq_q1:"Faut-il deux téléphones pour jouer ?",faq_a1:"Non. Versusly est un jeu 2 joueurs sur un seul iPhone : l'écran se divise en deux, chaque joueur tient un côté. Pas de second appareil, pas de Bluetooth.",faq_q2:"Versusly fonctionne-t-il sans connexion internet ?",faq_a2:"Oui, 100 % hors-ligne. Aucun wifi ni données mobiles requis — idéal en voiture, en soirée ou en voyage.",faq_q3:"Versusly est-il gratuit ?",faq_a3:"Oui, gratuit avec 3 mini-jeux. Versusly Pro (1,99 €, achat unique, sans abonnement) débloque les 6 jeux.",
         player1:"JOUEUR 1", player2:"JOUEUR 2",
         mockup_desc:"Chaque joueur tient un côté du téléphone. L'écran se divise en deux.",
         games_tag:"Mini-jeux", games_title:"6 jeux pour départager vos amis",
@@ -463,7 +480,7 @@
         nav_cta:"Download", badge:"Available on the App Store",
         hero_line1:"The game that puts", hero_line2:"friendships to the test",
         hero_desc:"2 players · 1 phone · No mercy. Chain mini-games in split-screen and prove who's the best.",
-        cta_appstore:"App Store", cta_learn:"See the games ↓", cta_share:"Share ↗",
+        cta_appstore:"App Store", cta_learn:"See the games ↓", cta_share:"Share ↗",faq_title:"Frequently asked questions",faq_q1:"Do you need two phones to play?",faq_a1:"No. Versusly is a 2-player game on a single iPhone: the screen splits in two and each player holds one side. No second device, no Bluetooth.",faq_q2:"Does Versusly work offline?",faq_a2:"Yes, 100% offline. No wifi or mobile data needed — perfect in the car, at a party or while traveling.",faq_q3:"Is Versusly free?",faq_a3:"Yes, free with 3 mini-games. Versusly Pro (€1.99, one-time purchase, no subscription) unlocks all 6 games.",
         player1:"PLAYER 1", player2:"PLAYER 2",
         mockup_desc:"Each player holds one side of the phone. The screen splits in two.",
         games_tag:"Mini-games", games_title:"6 games to settle the score",
