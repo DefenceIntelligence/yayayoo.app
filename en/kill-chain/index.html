@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <!-- Google Analytics 4 (chargé après consentement — RGPD/CNIL) -->
@@ -54,25 +54,25 @@
   </script>
   <!-- End Google Analytics 4 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kill Chain — Hackers. Tactiques. Un seul téléphone.</title>
-  <meta name="description" content="Jeu de tactique hacker en tour par tour. 2-4 joueurs sur un seul iPhone. Programmez vos attaques en secret, exécutez simultanément." />
-  <link rel="canonical" href="https://yayayoo.app/kill-chain/" />
+  <title>Kill Chain — Hackers. Tactics. One phone.</title>
+  <meta name="description" content="Turn-based hacker tactics game. 2-4 players on a single iPhone. Program your attacks in secret, execute simultaneously." />
+  <link rel="canonical" href="https://yayayoo.app/en/kill-chain/" />
   <link rel="alternate" hreflang="fr" href="https://yayayoo.app/kill-chain/" />
   <link rel="alternate" hreflang="en" href="https://yayayoo.app/en/kill-chain/" />
   <link rel="alternate" hreflang="x-default" href="https://yayayoo.app/kill-chain/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="yayayoo" />
-  <meta property="og:locale" content="fr_FR" />
-  <meta property="og:url" content="https://yayayoo.app/kill-chain/" />
-  <meta property="og:title" content="Kill Chain — Hackers. Tactiques. Un seul téléphone." />
-  <meta property="og:description" content="Jeu de tactique hacker en tour par tour. 2-4 joueurs sur un seul iPhone. Programmez vos attaques en secret, exécutez simultanément." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://yayayoo.app/en/kill-chain/" />
+  <meta property="og:title" content="Kill Chain — Hackers. Tactics. One phone." />
+  <meta property="og:description" content="Turn-based hacker tactics game. 2-4 players on a single iPhone. Program your attacks in secret, execute simultaneously." />
   <meta property="og:image" content="https://yayayoo.app/kill-chain/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@YayayooApp" />
-  <meta name="twitter:title" content="Kill Chain — Hackers. Tactiques. Un seul téléphone." />
-  <meta name="twitter:description" content="Jeu de tactique hacker en tour par tour. 2-4 joueurs sur un seul iPhone. Programmez vos attaques en secret, exécutez simultanément." />
+  <meta name="twitter:title" content="Kill Chain — Hackers. Tactics. One phone." />
+  <meta name="twitter:description" content="Turn-based hacker tactics game. 2-4 players on a single iPhone. Program your attacks in secret, execute simultaneously." />
   <meta name="twitter:image" content="https://yayayoo.app/kill-chain/og.png" />
   <style>
     :root {
@@ -359,28 +359,11 @@
     .faq details[open] summary::after { content: '−'; }
     .faq details p { padding: 0 0 18px; margin: 0; opacity: .72; line-height: 1.6; font-size: .95rem; }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Kill Chain",
-    "operatingSystem": "iOS",
-    "applicationCategory": "GameApplication",
-    "url": "https://yayayoo.app/kill-chain/",
-    "image": "https://yayayoo.app/kill-chain/og.png",
-    "description": "Jeu de tactique hacker en tour par tour. 2-4 joueurs sur un seul iPhone. Programmez vos attaques en secret, exécutez simultanément.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-    "publisher": { "@type": "Organization", "name": "yayayoo", "url": "https://yayayoo.app/" }
-  }
-  </script>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien de joueurs pour Kill Chain ?", "acceptedAnswer": {"@type": "Answer", "text": "De 2 à 4 joueurs sur un seul téléphone, en pass-and-play : chacun programme son tour en secret, puis tout s'exécute simultanément."}}, {"@type": "Question", "name": "Faut-il une connexion internet ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Kill Chain se joue en local, hors-ligne, autour d'un seul iPhone."}}, {"@type": "Question", "name": "Kill Chain est-il gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, gratuit. Kill Chain Pro (2,99 €) débloque toutes les classes."}}]}
-  </script>
 </head>
 <body>
 
   <nav>
-    <a href="/" class="nav-back">← yayayoo</a>
+    <a href="/en/" class="nav-back">← yayayoo</a>
     <div class="nav-logo">KILL_CHAIN</div>
     <div class="nav-right">
       <button class="lang-btn active" onclick="setLang('fr')">🇫🇷</button>
@@ -567,7 +550,7 @@
     <div class="footer-links">
       <a href="/kill-chain/privacy" data-i18n="f_privacy">Confidentialité</a>
       <a href="/kill-chain/terms" data-i18n="f_terms">Conditions</a>
-      <a href="/" data-i18n="f_back">← yayayoo</a>
+      <a href="/en/" data-i18n="f_back">← yayayoo</a>
       <a href="mailto:yayayoo.app@gmail.com">Contact</a>
     </div>
     <p class="footer-copy">© 2026 Stéphane Desmets. <span data-i18n="f_rights">Tous droits réservés.</span></p>
@@ -632,7 +615,7 @@
         f_privacy:"Privacy", f_terms:"Terms", f_back:"← yayayoo", f_rights:"All rights reserved.",
       }
     };
-    let lang = localStorage.getItem('lang') || 'fr';
+    let lang = 'en';
     function setLang(l) {
       lang = l; localStorage.setItem('lang', l); document.documentElement.lang = l;
       document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[l][el.dataset.i18n]; if (v) el.textContent = v; });

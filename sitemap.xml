@@ -17,4 +17,11 @@
   <url><loc>https://yayayoo.app/kill-chain/</loc><priority>0.8</priority></url>
   <url><loc>https://yayayoo.app/kill-chain/privacy/</loc><priority>0.3</priority></url>
   <url><loc>https://yayayoo.app/kill-chain/terms/</loc><priority>0.3</priority></url>
+
+  <!-- English versions -->
+  <url><loc>https://yayayoo.app/en/</loc><priority>0.9</priority></url>
+  <url><loc>https://yayayoo.app/en/versusly/</loc><priority>0.7</priority></url>
+  <url><loc>https://yayayoo.app/en/almostly/</loc><priority>0.7</priority></url>
+  <url><loc>https://yayayoo.app/en/givro/</loc><priority>0.7</priority></url>
+  <url><loc>https://yayayoo.app/en/kill-chain/</loc><priority>0.7</priority></url>
 </urlset>
