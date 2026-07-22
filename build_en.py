@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.11
 """Génère les pages anglaises /en/ depuis les sources FR (SEO anglophone).
 Ré-exécuter après toute modif des pages FR : python3 build_en.py
-Les pages EN réutilisent le dictionnaire i18n partagé (T.en) — le texte bascule
+Les pages EN réutilisent le dictionnaire i18n partagé (T.en), le texte bascule
 en anglais via JS (lang forcé à 'en' sur /en/), pas de traduction dupliquée.
 """
 import re, pathlib
@@ -18,33 +18,33 @@ PAGES = [
 DOMAIN = "https://yayayoo.app/"
 SLUGS = ["", "versusly", "almostly", "givro", "kill-chain"]
 
-# Traductions d'en-tête (title / description / og / twitter) — appliquées AU <head> SEUL
+# Traductions d'en-tête (title / description / og / twitter), appliquées AU <head> SEUL
 # (ne jamais toucher le body : le dico i18n T.fr y vit et doit rester intact)
 HEAD_REPL = {
  "index.html": [
-   ("yayayoo — Des apps qui font sourire", "yayayoo — Apps that make you smile"),
+   ("yayayoo, Des apps qui font sourire", "yayayoo, Apps that make you smile"),
    ("yayayoo est un studio indépendant qui crée des apps iPhone simples, soignées et amusantes. Découvrez Versusly, Almostly, Givró et Kill Chain.",
     "yayayoo is an independent studio making simple, polished, fun iPhone apps. Discover Versusly, Almostly, Givró and Kill Chain."),
    ("Studio indépendant d'apps iPhone simples, soignées et amusantes : Versusly, Almostly, Givró et Kill Chain.",
     "An independent studio making simple, polished, fun iPhone apps: Versusly, Almostly, Givró and Kill Chain."),
  ],
  "versusly/index.html": [
-   ("Versusly — 2 joueurs · 1 téléphone", "Versusly — 2 players · 1 phone"),
+   ("Versusly, 2 joueurs · 1 téléphone", "Versusly, 2 players · 1 phone"),
    ("Le jeu qui met l'amitié à l'épreuve. 6 mini-jeux en split-screen sur un seul iPhone.",
     "The game that puts friendships to the test. 6 split-screen mini-games on a single iPhone."),
  ],
  "almostly/index.html": [
-   ("Almostly — Tes dates, avec personnalité", "Almostly — Your dates, with personality"),
-   ("Almostly compte tes jours avec style — et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.",
-    "Almostly counts your days in style — and Pip, your mascot, comments on every milestone with humor, warmth or zen."),
+   ("Almostly, Tes dates, avec personnalité", "Almostly, Your dates, with personality"),
+   ("Almostly compte tes jours avec style, et Pip, ta mascotte, commente chaque étape avec humour, bienveillance ou zen attitude.",
+    "Almostly counts your days in style, and Pip, your mascot, comments on every milestone with humor, warmth or zen."),
  ],
  "givro/index.html": [
-   ("Givró — Rafraîchis ta nuit, naturellement.", "Givró — Cool your night, naturally."),
+   ("Givró, Rafraîchis ta nuit, naturellement.", "Givró, Cool your night, naturally."),
    ("Givró te dit quand ouvrir tes fenêtres la nuit pour rafraîchir ton logement naturellement pendant les canicules.",
     "Givró tells you when to open your windows at night to cool your home naturally during heat waves."),
  ],
  "kill-chain/index.html": [
-   ("Kill Chain — Hackers. Tactiques. Un seul téléphone.", "Kill Chain — Hackers. Tactics. One phone."),
+   ("Kill Chain, Hackers. Tactiques. Un seul téléphone.", "Kill Chain, Hackers. Tactics. One phone."),
    ("Jeu de tactique hacker en tour par tour. 2-4 joueurs sur un seul iPhone. Programmez vos attaques en secret, exécutez simultanément.",
     "Turn-based hacker tactics game. 2-4 players on a single iPhone. Program your attacks in secret, execute simultaneously."),
  ],
@@ -76,7 +76,7 @@ def build_en(src, slug, frpath):
     t = (BASE / src).read_text()
     # 0) purger d'éventuels hreflang hérités de la source FR (idempotence)
     t = re.sub(r'\n\s*<link rel="alternate" hreflang="[^"]*" href="[^"]*" />', '', t)
-    # 1) enlever les JSON-LD (texte FR — éviter le mismatch schema/visible sur EN)
+    # 1) enlever les JSON-LD (texte FR, éviter le mismatch schema/visible sur EN)
     t = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', '', t, flags=re.S)
     # 2) lang du document
     t = t.replace('<html lang="fr">', '<html lang="en">', 1)
@@ -98,7 +98,7 @@ def build_en(src, slug, frpath):
     # 7) images relatives -> absolues (Givró/Almostly)
     if slug:
         t = t.replace('src="screenshots/', f'src="/{slug}/screenshots/')
-    # 8) traduire l'en-tête (title/description/og/twitter) — HEAD SEUL
+    # 8) traduire l'en-tête (title/description/og/twitter), HEAD SEUL
     head, rest = t.split('</head>', 1)
     for fr, en in HEAD_REPL[src]:
         head = head.replace(fr, en)
